@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class Characteristic {
+[System.Serializable]
+public abstract class Characteristic : MonoBehaviour {
 
 	public int Priority;
 
