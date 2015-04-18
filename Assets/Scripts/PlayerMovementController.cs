@@ -5,7 +5,6 @@ public class PlayerMovementController : MonoBehaviour {
 	public bool inAir = true;
 
 	public float Speed = 4f;
-	public float Acceleration = 0.2f;
 	public float AlternateSpeedModifier = 1.8f;
 
 	public float JumpForce = 250f;
