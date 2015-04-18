@@ -31,6 +31,10 @@ public class Unit : MonoBehaviour {
 	}
 
 	void RecalculateCharacteristics() {
+		Health = baseHealth;
+		Speed = baseSpeed;
+		Armor = baseArmor;
+
 		foreach(int characteristic in Characteristics.Keys) {
 			Characteristics[characteristic].Modify(this);
 		}
