@@ -85,7 +85,7 @@ GameObject:
   - 4: {fileID: 294578114}
   - 212: {fileID: 294578113}
   - 61: {fileID: 294578115}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,6 +221,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1 &801645276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 801645277}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 1319202362, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &801645277
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 801645276}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.0450000018, y: -.449999988, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1017472889}
+  m_RootOrder: 0
 --- !u!1 &1017472887
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +299,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 801645277}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!58 &1017472890
@@ -284,7 +312,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Radius: .416344821
+  m_Radius: .4869636
   m_Center: {x: -.0299999993, y: .0299999993}
 --- !u!50 &1017472891
 Rigidbody2D:
@@ -312,7 +340,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b542ba1984e4aa4194a21ba91ba32d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSpeed: 10
+  inAir: 1
+  Speed: 4
+  Acceleration: .200000003
+  AlternateSpeedModifier: 6
+  JumpForce: 250
+  GroundCheckPosition: {fileID: 801645277}
+  GroundCheckRadius: .0399999991
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!95 &1017472893
 Animator:
   serializedVersion: 3
