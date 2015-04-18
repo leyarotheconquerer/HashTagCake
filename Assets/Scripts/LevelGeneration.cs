@@ -3,6 +3,14 @@ using System.Collections;
 
 public class LevelGeneration : MonoBehaviour {
 
+	public class Iterator {
+		public int life;
+		public int currX;
+		public int currY;
+		public int prevX;
+		public int prevY;
+	}
+
 	public class Level {
 
 		public int sizeX, sizeY;
@@ -11,9 +19,9 @@ public class LevelGeneration : MonoBehaviour {
 		public class Block {
 
 			public enum Type {
-				Wall,
+				Solid,
 				Empty,
-				Door,
+				Enter,
 				Exit,
 				Center
 			};
@@ -32,7 +40,7 @@ public class LevelGeneration : MonoBehaviour {
 
 			public Block() {
 				tile = new int[4][4];
-				type = Type.Wall;
+				type = Type.Empty;
 			}
 		}
 
@@ -59,36 +67,47 @@ public class LevelGeneration : MonoBehaviour {
 
 	// Actual level generation function
 	Level GenerateLevel(Level level) {
-		// Set Enterance
-		int enterX = (int)Random.Range (0, level.sizeX);
-		int enterY = (int)Random.Range (0, level.sizeY);
+		// Set Enterance and generate its platform
+		int enterX = (int)Random.Range (1, level.sizeX);
+		int enterY = (int)Random.Range (1, level.sizeY);
 		level.world [enterX] [enterY].type = Level.Block.Type.Door;
+		level.world [enterX] [enterY - 1].type = Level.Block.Type.Solid;
+		level.world [enterX - 1] [enterY - 1].type = Level.Block.Type.Solid;
+		level.world [enterX + 1] [enterY - 1].type = Level.Block.Type.Solid;
 
 		// Set Exit (x,y)
-		int exitX = (int)Random.Range (0, level.sizeX);
-		int exitY = (int)Random.Range (0, level.sizeY);
+		int exitX = (int)Random.Range (1, level.sizeX);
+		int exitY = (int)Random.Range (1, level.sizeY);
 
 		// If entrance (x,y) equals exit (x,y), get new (x,y) for exit
 		while (exitX == enterX && exitY == enterY) {
-			exitX = (int)Random.Range (0, level.sizeX);
-			exitY = (int)Random.Range (0, level.sizeY);
+			exitX = (int)Random.Range (1, level.sizeX);
+			exitY = (int)Random.Range (1, level.sizeY);
 		}
 
-		// Set Exit
+		// Set Exit and generate its platform
 		level.world [exitX] [exitY].type = Level.Block.Type.Exit;
+		level.world [exitX] [exitY - 1].type = Level.Block.Type.Solid;
+		level.world [exitX - 1] [exitY - 1].type = Level.Block.Type.Solid;
+		level.world [exitX + 1] [exitY - 1].type = Level.Block.Type.Solid;
 
-		// Set the weighted "center" (x,y)
-		int centerX = (int)Random.Range (0, level.sizeX);
-		int centerY = (int)Random.Range (0, level.sizeY);
+		// Set weighted center-ish platform/point (x,y)
+		int centerX = (int)Random.Range (1, level.sizeX);
+		int centerY = (int)Random.Range (1, level.sizeY);
 
-		// Get new values if the center (x,y) equals either the entrance (x,y) or the exit(x,y)
+		// If center (x,y) equals either the entrance (x,y) or exit (x,y), get new (x,y)
 		while ((centerX == enterX && centerY == enterY) || (centerX == exitX && centerY == exitY)) {
-			centerX = (int)Random.Range (0, level.sizeX);
-			centerY = (int)Random.Range (0, level.sizeY);
+			centerX = (int)Random.Range (1, level.sizeX);
+			centerY = (int)Random.Range (1, level.sizeY);
 		}
 
-		// Set "center"
-		level.world [centerX] [centerY] = Level.Block.Type.Center;
+		// Set center in world and generate its platform
+		level.world [centerX] [centerY].type = Level.Block.Type.Center;
+		level.world [centerX] [centerY - 1].type = Level.Block.Type.Solid;
+		level.world [centerX - 2] [centerY - 1].type = Level.Block.Type.Solid;
+		level.world [centerX - 1] [centerY - 1].type = Level.Block.Type.Solid;
+		level.world [centerX + 2] [centerY - 1].type = Level.Block.Type.Solid;
+		level.world [centerX + 1] [centerY - 1].type = Level.Block.Type.Solid;
 	}
 
 	// Update is called once per frame
