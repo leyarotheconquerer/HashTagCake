@@ -6,8 +6,9 @@ using System.Collections.Generic;
 public class Unit : MonoBehaviour {
 
 	public int Health;
+	public int MaxHealth;
 	public float Speed;
-	public int Armor;
+	public Dictionary<string, float> Armor;
 	public Weapon Weapon;
 
 	public List<Characteristic> CharacteristicArray;
@@ -15,12 +16,12 @@ public class Unit : MonoBehaviour {
 
 	public bool Dirty = true;
 
-	private int baseHealth;
+	private int baseMaxHealth;
 	private float baseSpeed;
-	private int baseArmor;
+	private Dictionary<string, float> baseArmor;
 
 	void Start() {
-		baseHealth = Health;
+		baseMaxHealth = MaxHealth;
 		baseSpeed = Speed;
 		baseArmor = Armor;
 
@@ -37,13 +38,24 @@ public class Unit : MonoBehaviour {
 	}
 
 	void RecalculateCharacteristics() {
-		Health = baseHealth;
+		MaxHealth = baseMaxHealth;
 		Speed = baseSpeed;
 		Armor = baseArmor;
 		Weapon.Reset();
 
 		foreach(int characteristic in Characteristics.Keys) {
 			Characteristics[characteristic].Modify(this);
+		}
+	}
+
+	public void TakeDamage(Dictionary<string, int> weaponStrengths) {
+		foreach (string elementType in weaponStrengths.Keys) {
+			if (Armor.ContainsKey(elementType)) {
+				Health -= weaponStrengths[elementType];
+			}
+			else {
+				Health -= (int)(weaponStrengths[elementType] * (1.0f - Armor[elementType]));
+			}
 		}
 	}
 }
