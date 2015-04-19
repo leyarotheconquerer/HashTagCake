@@ -22,6 +22,14 @@ public class PlayerMovementController : MonoBehaviour {
 	protected float jetpackEnabledTime;
 	protected bool facingRight = true;
 
+	protected Unit unit;
+
+	public void Start() {
+		unit = GetComponent<Unit>();
+		if(!unit)
+			Debug.LogWarning("Could not find unit component for '" + gameObject.name + "'");
+	}
+
 	public void Update() {
 		if(!inAir && JetpackParticles.isPlaying)
 			JetpackParticles.Stop();
@@ -37,6 +45,18 @@ public class PlayerMovementController : MonoBehaviour {
 					JetpackParticles.Play();
 			} else {
 				JetpackParticles.Stop();
+			}
+		}
+
+		if (Input.GetButtonDown ("Fire1")) {
+			Debug.Log("Firing");
+			rigidbody2D.Sleep();
+			CharacterAnimator.SetTrigger("Attack");
+		}
+
+		if(unit.IsDead()) {
+			if(!CharacterAnimator.GetBool("Dying")) {
+				CharacterAnimator.SetBool("Dying", true);
 			}
 		}
 	}
@@ -80,5 +100,18 @@ public class PlayerMovementController : MonoBehaviour {
 		facingRight = !facingRight;
 
 		transform.localScale = new Vector3(-1*transform.localScale.x, transform.localScale.y, transform.localScale.z);
+	}
+
+	public void BeginAttack() {
+		if(unit.Weapon)
+			unit.Weapon.ActivateAttack();
+	}
+
+	public void EndAttack() {
+		rigidbody2D.WakeUp();
+	}
+
+	public void Die() {
+		Destroy(gameObject);
 	}
 }
