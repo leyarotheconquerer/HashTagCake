@@ -52,7 +52,7 @@ public class PlayerMovementController : MonoBehaviour {
 	public void StopCharacter() {
 		rigidbody2D.velocity = new Vector2(0f, 0f);
 
-		if(CharacterAniator) {
+		if(CharacterAnimator) {
 			CharacterAnimator.SetFloat("Speed", 0f);
 			CharacterAnimator.SetFloat("Vertical Speed", 0f);
 		}
