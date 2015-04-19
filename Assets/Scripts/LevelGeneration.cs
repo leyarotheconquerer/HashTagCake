@@ -43,8 +43,6 @@ public class LevelGeneration : MonoBehaviour {
 		
 		public class Block
 		{
-			
-			public int[,] tile;
 			public bool isEdgeWorldTop = false;
 			public bool isEdgeWorldBottom = false;
 			public bool isEdgeWorldLeft = false;
@@ -58,7 +56,6 @@ public class LevelGeneration : MonoBehaviour {
 			
 			public Block()
 			{
-				tile = new int[4, 4];
 				type = 0;
 			}
 		}
@@ -95,41 +92,26 @@ public class LevelGeneration : MonoBehaviour {
 		}
 	}
 	
-	public Level level = new Level();
+	public Level level;
 
 	// Use this for initialization
 	public LevelGeneration () {
-		int mapsMade = 1;
+		level = new Level ();
+	}
+
+	public Level GenerateLevel() {
 		level = GenerateLevel(level);
 		
 		while (!IsFeasible())
 		{
 			level = GenerateLevel(level);
-			mapsMade++;
 		}
 
-		//output to a text file
-		/*string output = "";
-		
-		for (int y = level.sizeY - 1; y >= 0; y--)
-		{
-			for (int x = 0; x < level.sizeX; x++)
-			{
-				output = output + level.world[x, y].type.ToString();
-			}
-			output = output + "\r\n";
-		}
-		
-		using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:/Users/Ergo/testfile.txt"))
-		{
-			file.WriteLine(output);
-			file.WriteLine("\r\nTesting Area Reached\r\n");
-			file.WriteLine ("\r\nMaps made: \r\n" + mapsMade.ToString());
-		}*/
+		return level;
 	}
 
 	// Actual level generation function
-	Level GenerateLevel(Level level)
+	private Level GenerateLevel(Level level)
 	{
 		// Iterate through each cell
 		for (int x = 0; x < level.sizeX; x++)
@@ -327,10 +309,5 @@ public class LevelGeneration : MonoBehaviour {
 		}
 		
 		return neighbors;
-	}
-
-	// Update is called once per frame
-	void Update () {
-	
 	}
 }
