@@ -31,7 +31,7 @@ public class PlayerMovementController : MonoBehaviour {
 	}
 
 	public void Update() {
-		if(!inAir && JetpackParticles.isPlaying)
+		if(!inAir && JetpackParticles && JetpackParticles.isPlaying)
 			JetpackParticles.Stop();
 
 		if(!inAir && Input.GetButtonDown("Jump")) {
@@ -41,10 +41,11 @@ public class PlayerMovementController : MonoBehaviour {
 			if(Input.GetButton("Jump")) {
 				rigidbody2D.AddForce(new Vector2(0f, JetpackForce));
 
-				if(!JetpackParticles.isPlaying)
+				if(JetpackParticles && !JetpackParticles.isPlaying)
 					JetpackParticles.Play();
 			} else {
-				JetpackParticles.Stop();
+				if(JetpackParticles)
+					JetpackParticles.Stop();
 			}
 		}
 
