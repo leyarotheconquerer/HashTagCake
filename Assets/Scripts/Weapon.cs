@@ -6,7 +6,7 @@ public class Weapon : MonoBehaviour {
 
 	public int InitialStrength;
 	public Dictionary<string, int> Strength = new Dictionary<string, int>();
-	public int Speed;
+	public float Speed;
 
 	public Unit HoldingUnit;
 	public List<Characteristic> Characteristics;
