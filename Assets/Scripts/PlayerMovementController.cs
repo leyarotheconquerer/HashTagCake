@@ -13,6 +13,8 @@ public class PlayerMovementController : MonoBehaviour {
 	public float GroundCheckRadius = 0.04f;
 	public LayerMask GroundLayer;
 
+	public Animator CharacterAnimator;
+
 	protected bool facingRight = true;
 
 	public void Update() {
@@ -34,8 +36,15 @@ public class PlayerMovementController : MonoBehaviour {
 
 		rigidbody2D.velocity = new Vector2(calculatedSpeed, rigidbody2D.velocity.y);
 
+		// Flip character if necessary.
 		if((inputMovement > 0 && !facingRight) || (inputMovement < 0 && facingRight))
 			FlipCharacter();
+
+		// Update animator!
+		if(CharacterAnimator) {
+			CharacterAnimator.SetFloat("Speed", Mathf.Abs(calculatedSpeed));
+			CharacterAnimator.SetBool("Running", Input.GetButton("Movement Modifier") && Mathf.Abs(calculatedSpeed) > Speed);
+		}
 	}
 
 	private void FlipCharacter() {
