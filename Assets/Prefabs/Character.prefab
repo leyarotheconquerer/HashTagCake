@@ -134,7 +134,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147746}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -.375, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410638}
@@ -254,7 +254,7 @@ MonoBehaviour:
   AlternateSpeedModifier: 1.79999995
   JumpForce: 500
   JumpCooldown: .200000003
-  JetpackForce: 20
+  JetpackForce: 8
   GroundCheckPosition: {fileID: 410640}
   GroundCheckRadius: .0399999991
   GroundLayer:
