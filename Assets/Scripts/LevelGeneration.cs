@@ -43,8 +43,6 @@ public class LevelGeneration : MonoBehaviour {
 		
 		public class Block
 		{
-			
-			public int[,] tile;
 			public bool isEdgeWorldTop = false;
 			public bool isEdgeWorldBottom = false;
 			public bool isEdgeWorldLeft = false;
@@ -58,7 +56,6 @@ public class LevelGeneration : MonoBehaviour {
 			
 			public Block()
 			{
-				tile = new int[4, 4];
 				type = 0;
 			}
 		}
@@ -326,10 +323,5 @@ public class LevelGeneration : MonoBehaviour {
 		}
 		
 		return neighbors;
-	}
-
-	// Update is called once per frame
-	void Update () {
-	
 	}
 }
