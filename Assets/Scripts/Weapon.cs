@@ -5,14 +5,14 @@ using System.Collections.Generic;
 public class Weapon : MonoBehaviour {
 
 	public int InitialStrength;
-	public Dictionary<string, int> Strength;
+	public Dictionary<string, int> Strength = new Dictionary<string, int>();
 	public int Speed;
 
 	public Unit HoldingUnit;
 	public List<Characteristic> Characteristics;
 	public List<Weapon> InitialSubWeapons;
 
-	private Dictionary<Weapon, int> SubWeapons;
+	private Dictionary<Weapon, int> SubWeapons = new Dictionary<Weapon, int>();
 
 	private Dictionary<string, int> baseStrength;
 	private int baseSpeed;
@@ -44,7 +44,7 @@ public class Weapon : MonoBehaviour {
 	 * Multiple subweapons of the same type are permitted
 	 */
 	public void AddSubWeapon(Weapon weapon) {
-		if (SubWeapons.ContainsKey(weapon)) {
+		if (!SubWeapons.ContainsKey(weapon)) {
 			SubWeapons.Add(weapon, 1);
 		}
 		else {
@@ -89,13 +89,15 @@ public class Weapon : MonoBehaviour {
 	 */
 	public void CalculateCharacteristics() {
 		foreach (Characteristic characteristic in Characteristics) {
-			HoldingUnit.Characteristics.Add(characteristic.Priority, characteristic);
+			HoldingUnit.AddCharacteristic(characteristic);
 		}
 
-		foreach (Weapon weapon in SubWeapons.Keys) {
-			// Pay no attention to the magic happening here
-			for (int i = 0; i < SubWeapons[weapon]; ++i) {
-				weapon.CalculateCharacteristics();
+		if(SubWeapons != null) {
+			foreach (Weapon weapon in SubWeapons.Keys) {
+				// Pay no attention to the magic happening here
+				for (int i = 0; i < SubWeapons[weapon]; ++i) {
+					weapon.CalculateCharacteristics();
+				}
 			}
 		}
 	}

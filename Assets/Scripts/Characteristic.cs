@@ -7,5 +7,4 @@ public abstract class Characteristic : MonoBehaviour {
 	public int Priority;
 
 	public abstract void Modify(Unit unit);
-
 }
