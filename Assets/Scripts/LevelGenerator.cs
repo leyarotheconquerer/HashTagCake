@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class LevelGenerator : MonoBehaviour {
+public class LevelGenerator {
 
 	private struct Range
 	{
@@ -64,14 +64,14 @@ public class LevelGenerator : MonoBehaviour {
 		{
 			sizeX = 128;
 			sizeY = 128;
-			world = new Block[128, 128];
+			world = new Block[sizeX, sizeY];
 			
-			for (int x = 0; x < 128; x++)
+			for (int x = 0; x < sizeX; x++)
 			{
-				for (int y = 0; y < 128; y++)
+				for (int y = 0; y < sizeY; y++)
 				{
 					world[x, y] = new Block();
-					world[x, y].type = Random.Range(0, 2);
+					world[x, y].type = (int)Random.Range(0, 2);
 				}
 			}
 		}
@@ -82,11 +82,11 @@ public class LevelGenerator : MonoBehaviour {
 			this.sizeY = sizeY;
 			world = new Block[sizeX, sizeY];
 			
-			for (int x = 0; x < 128; x++)
+			for (int x = 0; x < sizeX; x++)
 			{
-				for (int y = 0; y < 128; y++)
+				for (int y = 0; y < sizeY; y++)
 				{
-					world[x, y].type = Random.Range(0, 2);
+					world[x, y].type = (int)Random.Range(0, 2);
 				}
 			}
 		}

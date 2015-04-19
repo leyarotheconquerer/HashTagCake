@@ -4,17 +4,18 @@ using System.Collections.Generic;
 
 public class LevelLogic : MonoBehaviour {
 
-	const int mapSizeX = 10;
-	const int mapSizeY = 10;
+	const int mapSizeX = 128;
+	const int mapSizeY = 128;
 
-	//LevelGeneration levelGenerator = new LevelGeneration();
-	//LevelGeneration.Level map = new LevelGeneration.Level (mapSizeX, mapSizeY);
+	LevelGenerator generator;
+	LevelGenerator.Level map;
+
 
 	public int levelsComplete = 0;
 
 	public GameObject playerPrefab;
 	public Transform[] tiles;
-	int[,] map = new int[mapSizeX, mapSizeY];
+	//int[,] map = new int[mapSizeX, mapSizeY];
 
 	GameObject player;
 
@@ -39,7 +40,7 @@ public class LevelLogic : MonoBehaviour {
 		levelsComplete = PlayerPrefs.GetInt("LevelsComplete");
 	
 
-		for (int i = 0; i < mapSizeX; i++)
+		/*for (int i = 0; i < mapSizeX; i++)
 		{
 			for (int j = 0; j < mapSizeY; j++)
 			{
@@ -47,7 +48,10 @@ public class LevelLogic : MonoBehaviour {
 			}
 		}
 		map [9, 0] = 2;
-		map [8, 0] = 3;
+		map [8, 0] = 3;*/
+
+		generator = new LevelGenerator();
+		map = generator.GenerateLevel();
 
 		drawMap ();
 
@@ -72,9 +76,9 @@ public class LevelLogic : MonoBehaviour {
 
 			for (int j = 0; j < mapSizeY; j++)
 			{
-				GameObject newobject = (GameObject)Instantiate(tiles[map[i, j]].gameObject, new Vector3(positionX, positionY, 2.0f), new Quaternion());
+				GameObject newobject = (GameObject)Instantiate(tiles[map.world[i,j].type].gameObject, new Vector3(positionX, positionY, 2.0f), new Quaternion());
 				levelTiles.Add(newobject);
-				if (map[i, j] == 2)  //an enter tile was spawned
+				if (map.world[i,j].type == 2)  //an enter tile was spawned
 				{
 
 					player.transform.position = new Vector3(newobject.transform.position.x, newobject.transform.position.y, player.transform.position.z);
@@ -82,7 +86,7 @@ public class LevelLogic : MonoBehaviour {
 					Debug.Log("the player should be at " + positionX + " : " + positionY);
 					Debug.Log("moved player to " + player.transform.position.x + " : " + player.transform.position.y);
 				}
-				else if (map[i, j] == 3) //an exit tile was spawned
+				else if (map.world[i,j].type == 3) //an exit tile was spawned
 				{
 					ExitLogic eLogic = newobject.GetComponentInChildren<ExitLogic>();
 					eLogic.level = this;
