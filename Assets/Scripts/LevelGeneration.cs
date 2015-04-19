@@ -98,22 +98,23 @@ public class LevelGeneration : MonoBehaviour {
 	public Level level = new Level();
 
 	// Use this for initialization
-	void Start () {
-		LevelGeneration test = new LevelGeneration();
-		test.level = test.GenerateLevel(test.level);
+	public LevelGeneration () {
+		int mapsMade = 1;
+		level = GenerateLevel(level);
 		
-		while (!test.IsFeasible())
+		while (!IsFeasible())
 		{
-			test.level = test.GenerateLevel(test.level);
+			level = GenerateLevel(level);
+			mapsMade++;
 		}
 		
 		string output = "";
 		
-		for (int y = test.level.sizeY - 1; y >= 0; y--)
+		for (int y = level.sizeY - 1; y >= 0; y--)
 		{
-			for (int x = 0; x < test.level.sizeX; x++)
+			for (int x = 0; x < level.sizeX; x++)
 			{
-				output = output + test.level.world[x, y].type.ToString();
+				output = output + level.world[x, y].type.ToString();
 			}
 			output = output + "\r\n";
 		}
@@ -122,16 +123,13 @@ public class LevelGeneration : MonoBehaviour {
 		{
 			file.WriteLine(output);
 			file.WriteLine("\r\nTesting Area Reached\r\n");
+			file.WriteLine ("\r\nMaps made: \r\n" + mapsMade.ToString());
 		}
 	}
 
 	// Actual level generation function
 	Level GenerateLevel(Level level)
 	{
-		using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:/Users/Ergo/testfile.txt"))
-		{
-			file.WriteLine("\r\n\r\nTesting Area Reached\r\n\r\n");
-		}
 		// Iterate through each cell
 		for (int x = 0; x < level.sizeX; x++)
 		{
@@ -156,10 +154,6 @@ public class LevelGeneration : MonoBehaviour {
 					{
 						if ((i == x) && (j == y))
 						{
-							using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:/Users/Ergo/testfile.txt", true))
-							{
-								file.WriteLine("\r\n\r\n" + x + ", " + y + "\r\n\r\n");
-							}
 							continue;
 						}
 						
