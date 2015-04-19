@@ -1,96 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using AssemblyCSharp;
 
-public class LevelGenerator : MonoBehaviour {
+public class LevelGenerator {
 
 	private struct Range
 	{
 		public int low;
 		public int high;
 	};
-	
-	public class Point
-	{
-		public int x;
-		public int y;
-		
-		public Point(int x, int y)
-		{
-			this.x = x;
-			this.y = y;
-		}
-		
-		public Point()
-		{
-			x = 0;
-			y = 0;
-		}
-		
-		public int DistanceTo(Point dest)
-		{
-			return (int)Mathf.Round(Mathf.Sqrt((dest.x - this.x) * (dest.x - this.x) + (dest.y - this.y) * (dest.y - this.y)));
-		}
-	}
-	
-	public class Level
-	{
-		
-		public int sizeX, sizeY;
-		public Block[,] world;
-		public Point enter;
-		public Point exit;
-		
-		public class Block
-		{
-			public bool isEdgeWorldTop = false;
-			public bool isEdgeWorldBottom = false;
-			public bool isEdgeWorldLeft = false;
-			public bool isEdgeWorldRight = false;
-			public bool isWallTop = false;
-			public bool isWallBottom = false;
-			public bool isWallLeft = false;
-			public bool isWallRight = false;
-			public bool isWall = true;
-			public int type;
-			
-			public Block()
-			{
-				type = 0;
-			}
-		}
-		
-		public Level()
-		{
-			sizeX = 128;
-			sizeY = 128;
-			world = new Block[128, 128];
-			
-			for (int x = 0; x < 128; x++)
-			{
-				for (int y = 0; y < 128; y++)
-				{
-					world[x, y] = new Block();
-					world[x, y].type = Random.Range(0, 2);
-				}
-			}
-		}
-		
-		public Level(int sizeX, int sizeY)
-		{
-			this.sizeX = sizeX;
-			this.sizeY = sizeY;
-			world = new Block[sizeX, sizeY];
-			
-			for (int x = 0; x < 128; x++)
-			{
-				for (int y = 0; y < 128; y++)
-				{
-					world[x, y].type = Random.Range(0, 2);
-				}
-			}
-		}
-	}
 	
 	public Level level;
 
