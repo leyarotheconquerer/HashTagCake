@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using AssemblyCSharp;
 
 public class LevelGenerator {
 
@@ -10,6 +11,7 @@ public class LevelGenerator {
 		public int high;
 	};
 	
+<<<<<<< HEAD
 	public class Point
 	{
 		public int x;
@@ -92,6 +94,8 @@ public class LevelGenerator {
 		}
 	}
 	
+=======
+>>>>>>> aee3554ecf02574aeb5372e800b379e9410a9e54
 	public Level level;
 
 	// Use this for initialization
