@@ -7,11 +7,14 @@ public class LevelLogic : MonoBehaviour {
 	const int mapSizeX = 10;
 	const int mapSizeY = 10;
 
+	//LevelGeneration levelGenerator = new LevelGeneration();
+	//LevelGeneration.Level map = new LevelGeneration.Level (mapSizeX, mapSizeY);
+
 	public int levelsComplete = 0;
 
 	public GameObject playerPrefab;
 	public Transform[] tiles;
-	int[,] map;
+	int[,] map = new int[mapSizeX, mapSizeY];
 
 	GameObject player;
 
@@ -34,15 +37,13 @@ public class LevelLogic : MonoBehaviour {
 
 		this.player = PlayerLogic.player;
 		levelsComplete = PlayerPrefs.GetInt("LevelsComplete");
-
-
-		map = new int[mapSizeX, mapSizeY];
+	
 
 		for (int i = 0; i < mapSizeX; i++)
 		{
 			for (int j = 0; j < mapSizeY; j++)
 			{
-				map[i,j] = (int)Random.Range(0, 5);
+				map[i,j] = (int)Random.Range(0, 6);
 			}
 		}
 		map [9, 0] = 2;
@@ -71,9 +72,9 @@ public class LevelLogic : MonoBehaviour {
 
 			for (int j = 0; j < mapSizeY; j++)
 			{
-				GameObject newobject = (GameObject)Instantiate(tiles[map[i,j]].gameObject, new Vector3(positionX, positionY, 2.0f), new Quaternion());
+				GameObject newobject = (GameObject)Instantiate(tiles[map[i, j]].gameObject, new Vector3(positionX, positionY, 2.0f), new Quaternion());
 				levelTiles.Add(newobject);
-				if (map[i,j] == 2)  //an enter tile was spawned
+				if (map[i, j] == 2)  //an enter tile was spawned
 				{
 
 					player.transform.position = new Vector3(newobject.transform.position.x, newobject.transform.position.y, player.transform.position.z);
@@ -81,7 +82,7 @@ public class LevelLogic : MonoBehaviour {
 					Debug.Log("the player should be at " + positionX + " : " + positionY);
 					Debug.Log("moved player to " + player.transform.position.x + " : " + player.transform.position.y);
 				}
-				else if (map[i,j] == 3) //an exit tile was spawned
+				else if (map[i, j] == 3) //an exit tile was spawned
 				{
 					ExitLogic eLogic = newobject.GetComponentInChildren<ExitLogic>();
 					eLogic.level = this;

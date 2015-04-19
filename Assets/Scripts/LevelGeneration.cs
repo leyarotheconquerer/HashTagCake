@@ -107,8 +107,9 @@ public class LevelGeneration : MonoBehaviour {
 			level = GenerateLevel(level);
 			mapsMade++;
 		}
-		
-		string output = "";
+
+		//output to a text file
+		/*string output = "";
 		
 		for (int y = level.sizeY - 1; y >= 0; y--)
 		{
@@ -124,7 +125,7 @@ public class LevelGeneration : MonoBehaviour {
 			file.WriteLine(output);
 			file.WriteLine("\r\nTesting Area Reached\r\n");
 			file.WriteLine ("\r\nMaps made: \r\n" + mapsMade.ToString());
-		}
+		}*/
 	}
 
 	// Actual level generation function
