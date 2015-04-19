@@ -32,7 +32,7 @@ public class Weapon : MonoBehaviour {
 		Strength.Add("Physical", InitialStrength);
 
 		// Store our base statistics
-		baseStrength = Strength;
+		baseStrength = new Dictionary<string, int>(Strength);
 		baseSpeed = Speed;
 
 		// Fairly self explanatory...
@@ -75,6 +75,14 @@ public class Weapon : MonoBehaviour {
 		SubWeapons.Clear();
 	}
 
+	public void DestroySubWeapons() {
+		foreach(Weapon weapon in SubWeapons.Keys) {
+			Destroy(weapon.gameObject);
+		}
+
+		ClearSubWeapons();
+	}
+
 	/**
 	 * Attacks the unit passed.
 	 * Assumes that the unit is in range.
@@ -107,7 +115,7 @@ public class Weapon : MonoBehaviour {
 	 * Also tells subweapons to reset
 	 */
 	public void Reset() {
-		Strength = baseStrength;
+		Strength = new Dictionary<string, int>(baseStrength);
 		Speed = baseSpeed;
 
 		ThrowMudAtHoldingUnit();

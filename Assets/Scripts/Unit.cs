@@ -31,15 +31,13 @@ public class Unit : MonoBehaviour {
 		Armor = new Dictionary<string, float>();
 		Characteristics = new SortedDictionary<int, HashSet<Characteristic>>();
 
-		foreach (Characteristic characteristic in CharacteristicArray) {
-			AddCharacteristic(characteristic);
-		}
+		ResetCharacteristics();
 
 		Armor["Physical"] = InitialArmor;
 
 		baseMaxHealth = MaxHealth;
 		baseSpeed = Speed;
-		baseArmor = Armor;
+		baseArmor = new Dictionary<string, float>(Armor);
 	}
 
 	void Update() {
@@ -53,14 +51,21 @@ public class Unit : MonoBehaviour {
 		}
 
 		if(Input.GetKeyDown(KeyCode.R)) {
-			ReplaceWeapon((GameObject)Instantiate(ReplaceObject));
+			Weapon oldWeapon = ReplaceWeapon((GameObject)Instantiate(ReplaceObject));
+
+			if(oldWeapon) {
+				oldWeapon.DestroySubWeapons();
+				Destroy(oldWeapon.gameObject);
+			}
 		}
 	}
 
 	void RecalculateCharacteristics() {
 		MaxHealth = baseMaxHealth;
 		Speed = baseSpeed;
-		Armor = baseArmor;
+		Armor = new Dictionary<string, float>(baseArmor);
+
+		ClearCharacteristics();
 
 		if(Weapon) {
 			Weapon.Reset();
@@ -80,13 +85,16 @@ public class Unit : MonoBehaviour {
 		OutputStats();
 	}
 
-	public void ReplaceWeapon(GameObject weapon) {
+	public Weapon ReplaceWeapon(GameObject weapon) {
 		Weapon weaponObject = weapon.GetComponent<Weapon>();
+		Weapon oldWeapon = Weapon;
 
 		Weapon = weaponObject;
 		weaponObject.HoldingUnit = this;
 
 		weapon.transform.SetParent(WeaponHand, false);
+
+		return oldWeapon;
 	}
 	
 	public void AddWeapon(GameObject weapon) {
@@ -115,6 +123,28 @@ public class Unit : MonoBehaviour {
 
 		if(Characteristics.TryGetValue(characteristic.Priority, out charSet)) {
 			charSet.Add (characteristic);
+		}
+	}
+
+	public void RemoveCharacteristic(Characteristic characteristic) {
+		if(Characteristics.ContainsKey(characteristic.Priority)) {
+			HashSet<Characteristic> charSet;
+
+			if(Characteristics.TryGetValue(characteristic.Priority, out charSet)) {
+				charSet.Remove(characteristic);
+			}
+		}
+	}
+
+	public void ClearCharacteristics() {
+		Characteristics.Clear();
+	}
+
+	public void ResetCharacteristics() {
+		ClearCharacteristics();
+
+		foreach (Characteristic characteristic in CharacteristicArray) {
+			AddCharacteristic(characteristic);
 		}
 	}
 
@@ -147,6 +177,16 @@ public class Unit : MonoBehaviour {
 				}
 			}
 			output += "I have a weapon with " + Weapon.Speed + " speed\n";
+		}
+		output += "I have these characteristics:\n";
+		foreach(int setId in Characteristics.Keys) {
+			HashSet<Characteristic> charSet;
+
+			if(Characteristics.TryGetValue(setId, out charSet)) {
+				foreach(Characteristic characteristic in charSet) {
+					output += "    " + characteristic.ToString() + "\n";
+				}
+			}
 		}
 
 

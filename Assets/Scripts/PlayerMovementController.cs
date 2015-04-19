@@ -31,7 +31,6 @@ public class PlayerMovementController : MonoBehaviour {
 		}
 
 		if (Input.GetButtonDown ("Fire1")) {
-			Debug.Log("Attack");
 			rigidbody2D.Sleep();
 			CharacterAnimator.SetTrigger("Attack");
 		}

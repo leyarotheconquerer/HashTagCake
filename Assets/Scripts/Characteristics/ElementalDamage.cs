@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ElementalDamage : Characteristic {
 
@@ -8,11 +9,16 @@ public class ElementalDamage : Characteristic {
 	public float DamageMultiplier = 1.0f;
 
 	public override void Modify(Unit unit) {
-		if (unit.Weapon.Strength != null && unit.Weapon.Strength.ContainsKey (Element)) {
-			unit.Weapon.Strength [Element] = (int)((unit.Weapon.Strength [Element] + DamageAdded) * DamageMultiplier);
+		Dictionary<string, int> strength = unit.Weapon.Strength;
+
+		if (strength != null && strength.ContainsKey (Element)) {
+			int temp = strength[Element];
+			temp += DamageAdded;
+			temp = (int)(temp * DamageMultiplier);
+			strength[Element] = temp;
 		}
-		else if(unit.Weapon.Strength != null) {
-			unit.Weapon.Strength.Add(Element, (int)(DamageAdded * DamageMultiplier));
+		else if(strength != null) {
+			strength.Add(Element, (int)(DamageAdded * DamageMultiplier));
 		}
 	}
 
