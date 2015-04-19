@@ -9,7 +9,7 @@ public class PlayerMovementController : MonoBehaviour {
 
 	public float JumpForce = 250f;
 	public float JumpCooldown = 0.2f;
-	public float JetpackForce = 20f;
+	public float JetpackForce = 2f;
 
 	public Transform GroundCheckPosition;
 	public float GroundCheckRadius = 0.04f;
