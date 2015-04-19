@@ -22,12 +22,14 @@ public class PlayerMovementController : MonoBehaviour {
 	protected float jetpackEnabledTime;
 	protected bool facingRight = true;
 
+
 	protected Unit unit;
 
 	public void Start() {
 		unit = GetComponent<Unit>();
 		if(!unit)
 			Debug.LogWarning("Could not find unit component for '" + gameObject.name + "'");
+
 	}
 
 	public void Update() {
@@ -35,6 +37,7 @@ public class PlayerMovementController : MonoBehaviour {
 			JetpackParticles.Stop();
 
 		if(!inAir && Input.GetButtonDown("Jump")) {
+			Debug.Log("I am jumping");
 			rigidbody2D.AddForce(new Vector2(0f, JumpForce));
 			jetpackEnabledTime = Time.time + JumpCooldown;
 		} else if(inAir && Time.time >= jetpackEnabledTime) {
