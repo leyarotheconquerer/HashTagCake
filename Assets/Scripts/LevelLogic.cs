@@ -5,18 +5,19 @@ using AssemblyCSharp;
 
 public class LevelLogic : MonoBehaviour {
 
-	const int mapSizeX = 128;
-	const int mapSizeY = 128;
+	const int mapSizeX = 90;
+	const int mapSizeY = 90;
 
 	LevelGenerator generator;
-	Level map;
-
+	Level map = null;
+	Level nextLevel;
+	public GameObject levelPrefab;
+	public bool NextLevelLoaded = false;
 
 	public int levelsComplete = 0;
 
 	public GameObject playerPrefab;
 	public Transform[] tiles;
-	//int[,] map = new int[mapSizeX, mapSizeY];
 
 	GameObject player;
 
@@ -39,29 +40,40 @@ public class LevelLogic : MonoBehaviour {
 
 		this.player = PlayerLogic.player;
 		levelsComplete = PlayerPrefs.GetInt("LevelsComplete");
-	
 
-		/*for (int i = 0; i < mapSizeX; i++)
-		{
-			for (int j = 0; j < mapSizeY; j++)
-			{
-				map[i,j] = (int)Random.Range(0, 6);
-			}
+		generator = new LevelGenerator ();
+
+		if (NextLevel.nextLevel != null) {
+			map = NextLevel.nextLevel;
 		}
-		map [9, 0] = 2;
-		map [8, 0] = 3;*/
-
-		generator = new LevelGenerator();
-		map = generator.GenerateLevel();
 
 		drawMap ();
 
+		StartCoroutine (GetLevel());
+	}
+
+	public System.Collections.IEnumerator GetLevel() {
+//		generator = new LevelGenerator();
+//		Level tmpmap = generator.GenerateLevel();
+		while (! LoadingNextLevel()) 
+			yield return "";
+
+		NextLevelFinished ();
+	}
+
+	public bool LoadingNextLevel() {
+		NextLevel.nextLevel = generator.GenerateLevel ();
+		return true;
+	}
+
+	public void NextLevelFinished() {
+		NextLevelLoaded = true;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		//Debug.Log (player.transform.position.x + " : " + player.transform.position.y);
+
 	}
 
 	void drawMap()
@@ -102,34 +114,6 @@ public class LevelLogic : MonoBehaviour {
 
 	public void reset()
 	{
-
-
-
-		/*for (int i = 0; i < levelTiles.Count; i++)
-		{
-
-			Debug.Log("destroying " + levelTiles[i].name);
-			GameObject tile = levelTiles[i].gameObject;
-			Destroy(levelTiles[i]);
-			levelTiles.RemoveAt(i);
-
-
-		}
-
-		Debug.Log ("resetting the map");
-		map = new int[mapSizeX, mapSizeY];
-		
-		for (int i = 0; i < 10; i++)
-		{
-			for (int j = 0; j < 10; j++)
-			{
-				map[i,j] = (int)Random.Range(0, 6);
-			}
-		}
-		map [9, 0] = 2;
-		map [8, 0] = 3;
-		
-		drawMap ();*/
 		levelsComplete++;
 		PlayerPrefs.SetInt("LevelsComplete", levelsComplete);
 		Application.LoadLevel ("testScene");
