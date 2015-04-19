@@ -102,6 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eba0dd8082c58b746b030c170c3ac97e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelPrefab: {fileID: 0}
+  NextLevelLoaded: 0
   levelsComplete: 0
   playerPrefab: {fileID: 100002, guid: e6b13afde759eb24d99657de84663cb7, type: 2}
   tiles:
