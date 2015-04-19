@@ -17,8 +17,16 @@ public class PlayerMovementController : MonoBehaviour {
 
 	protected bool facingRight = true;
 
+	public void Start()
+	{
+
+
+
+	}
+
 	public void Update() {
 		if(!inAir && Input.GetButtonDown("Jump")) {
+			Debug.Log("I am jumping");
 			rigidbody2D.AddForce(new Vector2(0f, JumpForce));
 		}
 	}
