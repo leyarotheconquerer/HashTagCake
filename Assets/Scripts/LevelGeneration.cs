@@ -109,9 +109,9 @@ public class LevelGeneration : MonoBehaviour {
 		
 		string output = "";
 		
-		for (int x = 0; x < test.level.sizeX; x++)
+		for (int y = test.level.sizeY - 1; y >= 0; y--)
 		{
-			for (int y = 0; y < test.level.sizeY; y++)
+			for (int x = 0; x < test.level.sizeX; x++)
 			{
 				output = output + test.level.world[x, y].type.ToString();
 			}
