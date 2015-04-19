@@ -8,6 +8,8 @@ public class PlayerMovementController : MonoBehaviour {
 	public float AlternateSpeedModifier = 1.8f;
 
 	public float JumpForce = 250f;
+	public float JumpCooldown = 0.2f;
+	public float JetpackForce = 20f;
 
 	public Transform GroundCheckPosition;
 	public float GroundCheckRadius = 0.04f;
@@ -15,11 +17,27 @@ public class PlayerMovementController : MonoBehaviour {
 
 	public Animator CharacterAnimator;
 
+	public ParticleSystem JetpackParticles;
+
+	protected float jetpackEnabledTime;
 	protected bool facingRight = true;
 
 	public void Update() {
+		if(!inAir && JetpackParticles.isPlaying)
+			JetpackParticles.Stop();
+
 		if(!inAir && Input.GetButtonDown("Jump")) {
 			rigidbody2D.AddForce(new Vector2(0f, JumpForce));
+			jetpackEnabledTime = Time.time + JumpCooldown;
+		} else if(inAir && Time.time >= jetpackEnabledTime) {
+			if(Input.GetButton("Jump")) {
+				rigidbody2D.AddForce(new Vector2(0f, JetpackForce));
+
+				if(!JetpackParticles.isPlaying)
+					JetpackParticles.Play();
+			} else {
+				JetpackParticles.Stop();
+			}
 		}
 	}
 
