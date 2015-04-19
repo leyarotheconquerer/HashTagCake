@@ -15,7 +15,7 @@ public class Weapon : MonoBehaviour {
 	private Dictionary<Weapon, int> SubWeapons = new Dictionary<Weapon, int>();
 
 	private Dictionary<string, int> baseStrength;
-	private int baseSpeed;
+	private float baseSpeed;
 
 	void Start() {
 		// Make sure we have a holding unit
