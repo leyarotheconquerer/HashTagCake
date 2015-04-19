@@ -49,6 +49,15 @@ public class PlayerMovementController : MonoBehaviour {
 		}
 	}
 
+	public void StopCharacter() {
+		rigidbody2D.velocity = new Vector2(0f, 0f);
+
+		if(CharacterAniator) {
+			CharacterAnimator.SetFloat("Speed", 0f);
+			CharacterAnimator.SetFloat("Vertical Speed", 0f);
+		}
+	}
+
 	private void FlipCharacter() {
 		facingRight = !facingRight;
 
