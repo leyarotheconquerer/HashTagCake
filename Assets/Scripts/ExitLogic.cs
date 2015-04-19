@@ -20,9 +20,7 @@ public class ExitLogic : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D thing) 
 	{
-
-		if (thing.name.Substring (0, 6) == "Player")
-		{
+		if(thing.tag == "Player") {
 			level.reset();
 			Debug.Log("player hit exit");
 		} 

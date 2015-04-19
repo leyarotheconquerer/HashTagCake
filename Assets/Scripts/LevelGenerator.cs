@@ -95,11 +95,26 @@ public class LevelGenerator {
 		Range yAround = new Range();
 		yAround.low = Mathf.Max(0, enterY - 1);
 		yAround.high = Mathf.Min(level.sizeY, enterY + 1);
-		
+
+		Dictionary<int, HashSet<int>> memoizedInsanity = new Dictionary<int, HashSet<int>>();
 		while (TooManySolids(enterX, enterY, xAround, yAround))
 		{
-			enterX = (int)Random.Range(1, level.sizeX - 1);
-			enterY = (int)Random.Range(1, level.sizeY - 1);
+			if(!memoizedInsanity.ContainsKey(enterX)) {
+				memoizedInsanity.Add(enterX, new HashSet<int>());
+			}
+
+			memoizedInsanity[enterX].Add(enterY);
+
+			while(memoizedInsanity.ContainsKey(enterX) && memoizedInsanity[enterX].Contains(enterY)) {
+				enterX = (int)Random.Range(1, level.sizeX - 1);
+				enterY = (int)Random.Range(1, level.sizeY - 1);
+
+				xAround.low = Mathf.Max(0, enterX - 1);
+				xAround.high = Mathf.Min(level.sizeX - 1, enterX + 1);
+
+				yAround.low = Mathf.Max(0, enterY - 1);
+				yAround.high = Mathf.Min(level.sizeY, enterY + 1);
+			}
 		}
 		
 		level.world[enterX, enterY].type = 2;
@@ -115,12 +130,26 @@ public class LevelGenerator {
 		xAround.high = Mathf.Min(level.sizeX - 1, exitX + 1);
 		yAround.low = Mathf.Max(0, exitY - 1);
 		yAround.high = Mathf.Min(level.sizeY - 1, exitY + 1);
-		
+
 		// If entrance (x,y) equals exit (x,y), get new (x,y) for exit
+		memoizedInsanity.Clear();
 		while (exitX == enterX && exitY == enterY || TooManySolids(exitX, exitY, xAround, yAround))
 		{
-			exitX = (int)Random.Range(1, level.sizeX);
-			exitY = (int)Random.Range(1, level.sizeY);
+			if(!memoizedInsanity.ContainsKey(exitX)) {
+				memoizedInsanity.Add(exitX, new HashSet<int>());
+			}
+			memoizedInsanity[exitX].Add(exitY);
+
+			while(memoizedInsanity.ContainsKey(exitX) && memoizedInsanity[exitX].Contains(exitY)) {
+				exitX = (int)Random.Range(1, level.sizeX);
+				exitY = (int)Random.Range(1, level.sizeY);
+
+				xAround.low = Mathf.Max(0, exitX - 1);
+				xAround.high = Mathf.Min(level.sizeX - 1, exitX + 1);
+
+				yAround.low = Mathf.Max(0, exitY - 1);
+				yAround.high = Mathf.Min(level.sizeY - 1, exitY + 1);
+			}
 		}
 		
 		// Set Exit and generate its platform
@@ -132,11 +161,13 @@ public class LevelGenerator {
 		
 		return level;
 	}
-	
+
+	static int number = 0;
+
 	// Function to see how many solid spaces exist around a point
 	bool TooManySolids(int x, int y, Range xAround, Range yAround)
-	{
-		
+	{	
+		number++;
 		int solidCount = 0;
 		
 		//Check each cell around it, if the spaces around it are solid, return true. Otherwise, return false.
