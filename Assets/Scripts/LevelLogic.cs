@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using AssemblyCSharp;
 
 public class LevelLogic : MonoBehaviour {
 
@@ -8,7 +9,7 @@ public class LevelLogic : MonoBehaviour {
 	const int mapSizeY = 128;
 
 	LevelGenerator generator;
-	LevelGenerator.Level map;
+	Level map;
 
 
 	public int levelsComplete = 0;
