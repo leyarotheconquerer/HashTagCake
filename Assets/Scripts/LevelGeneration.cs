@@ -105,7 +105,6 @@ public class LevelGeneration : MonoBehaviour {
 		while (!IsFeasible())
 		{
 			level = GenerateLevel(level);
-			mapsMade++;
 		}
 
 		return level;
