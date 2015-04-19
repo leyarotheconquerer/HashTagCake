@@ -43,8 +43,13 @@ public class LevelLogic : MonoBehaviour {
 
 		generator = new LevelGenerator ();
 
-		if (NextLevel.nextLevel != null) {
-			map = NextLevel.nextLevel;
+		if (NextLevel.nextLevel != null) 
+		{
+						map = NextLevel.nextLevel;
+		}
+		else 
+		{
+			map = generator.GenerateLevel();
 		}
 
 		drawMap ();
