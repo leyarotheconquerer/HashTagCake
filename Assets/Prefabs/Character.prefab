@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11410640}
   - 114: {fileID: 11495600}
   - 61: {fileID: 6195600}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 410640}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 1319202362, guid: 0000000000000000d000000000000000, type: 0}
@@ -44,7 +44,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 424988}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WeaponHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   - 92: {fileID: 9285718}
   - 124: {fileID: 12485718}
   - 81: {fileID: 8185718}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -246,6 +246,10 @@ MonoBehaviour:
   InitialArmor: .300000012
   Weapon: {fileID: 0}
   CharacteristicArray: []
+  AddObject: {fileID: 139758, guid: 08c6c517966fba84f9dcb2ae317f651f, type: 2}
+  ReplaceObject: {fileID: 176818, guid: 6e0fa8e76666eae48ba8df87528d12b1, type: 2}
+  WeaponHand: {fileID: 424988}
+  WeaponOffset: .100000001
   Dirty: 1
 --- !u!124 &12485718
 Behaviour:

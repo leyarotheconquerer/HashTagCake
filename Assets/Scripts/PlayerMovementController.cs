@@ -31,8 +31,15 @@ public class PlayerMovementController : MonoBehaviour {
 		}
 
 		if (Input.GetButtonDown ("Fire1")) {
+			Debug.Log("Firing");
 			rigidbody2D.Sleep();
 			CharacterAnimator.SetTrigger("Attack");
+		}
+
+		if(unit.IsDead()) {
+			if(!CharacterAnimator.GetBool("Dying")) {
+				CharacterAnimator.SetBool("Dying", true);
+			}
 		}
 	}
 
@@ -77,7 +84,16 @@ public class PlayerMovementController : MonoBehaviour {
 		transform.localScale = new Vector3(-1*transform.localScale.x, transform.localScale.y, transform.localScale.z);
 	}
 
+	public void BeginAttack() {
+		if(unit.Weapon)
+			unit.Weapon.ActivateAttack();
+	}
+
 	public void EndAttack() {
 		rigidbody2D.WakeUp();
+	}
+
+	public void Die() {
+		Destroy(gameObject);
 	}
 }

@@ -12,6 +12,8 @@ public class Weapon : MonoBehaviour {
 	public List<Characteristic> Characteristics;
 	public List<Weapon> InitialSubWeapons;
 
+	public LayerMask Hittable;
+
 	private Dictionary<Weapon, int> SubWeapons = new Dictionary<Weapon, int>();
 
 	private Dictionary<string, int> baseStrength;
@@ -37,6 +39,19 @@ public class Weapon : MonoBehaviour {
 
 		// Fairly self explanatory...
 		ThrowMudAtHoldingUnit();
+	}
+
+	void OnTriggerEnter2D(Collider2D collider) {
+		if((Hittable.value & (1<<collider.gameObject.layer)) > 0 &&
+		   collider.gameObject != HoldingUnit.gameObject) {
+			Debug.Log("Cows are happening (" + gameObject.name + " hitting " + collider.gameObject.name + ")");
+
+			Unit target = collider.GetComponent<Unit>();
+
+			target.TakeDamage(HoldingUnit.Weapon.Strength);
+		}
+
+		HoldingUnit.Weapon.DeactivateAttack();
 	}
 
 	/**
@@ -75,12 +90,40 @@ public class Weapon : MonoBehaviour {
 		SubWeapons.Clear();
 	}
 
+	/**
+	 * Kill them with fire
+	 */
 	public void DestroySubWeapons() {
 		foreach(Weapon weapon in SubWeapons.Keys) {
+			// Insert fire here
 			Destroy(weapon.gameObject);
 		}
 
 		ClearSubWeapons();
+	}
+
+	/**
+	 * This is a big red button. Press it. I dare you.
+	 */
+	public void ActivateAttack() {
+		collider2D.enabled = true;
+
+		foreach(Weapon weapon in SubWeapons.Keys) {
+			weapon.ActivateAttack();
+		}
+	}
+
+	/**
+	 * Oh...
+	 * 
+	 * I just meant to get coffee. Who put these buttons next to each other anyways?
+	 */
+	public void DeactivateAttack() {
+		collider2D.enabled = false;
+
+		foreach(Weapon weapon in SubWeapons.Keys) {
+			weapon.DeactivateAttack();
+		}
 	}
 
 	/**

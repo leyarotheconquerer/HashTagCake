@@ -46,16 +46,18 @@ public class Unit : MonoBehaviour {
 			Dirty = false;
 		}
 
-		if(Input.GetKeyDown(KeyCode.A)) {
-			AddWeapon((GameObject)Instantiate(AddObject));
-		}
+		if(ReplaceObject || AddObject) {
+			if(Input.GetKeyDown(KeyCode.A)) {
+				AddWeapon((GameObject)Instantiate(AddObject));
+			}
 
-		if(Input.GetKeyDown(KeyCode.R)) {
-			Weapon oldWeapon = ReplaceWeapon((GameObject)Instantiate(ReplaceObject));
+			if(Input.GetKeyDown(KeyCode.R)) {
+				Weapon oldWeapon = ReplaceWeapon((GameObject)Instantiate(ReplaceObject));
 
-			if(oldWeapon) {
-				oldWeapon.DestroySubWeapons();
-				Destroy(oldWeapon.gameObject);
+				if(oldWeapon) {
+					oldWeapon.DestroySubWeapons();
+					Destroy(oldWeapon.gameObject);
+				}
 			}
 		}
 	}
@@ -150,13 +152,17 @@ public class Unit : MonoBehaviour {
 
 	public void TakeDamage(Dictionary<string, int> weaponStrengths) {
 		foreach (string elementType in weaponStrengths.Keys) {
-			if (Armor.ContainsKey(elementType)) {
+			if (!Armor.ContainsKey(elementType)) {
 				Health -= weaponStrengths[elementType];
 			}
 			else {
 				Health -= (int)(weaponStrengths[elementType] * (1.0f - Armor[elementType]));
 			}
 		}
+	}
+
+	public bool IsDead() {
+		return Health <= 0;
 	}
 
 	public void OutputStats() {
