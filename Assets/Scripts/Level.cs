@@ -42,13 +42,13 @@ namespace AssemblyCSharp
 		
 		public Level()
 		{
-			sizeX = 128;
-			sizeY = 128;
-			world = new Block[128, 128];
+			sizeX = 100;
+			sizeY = 100;
+			world = new Block[sizeX, sizeY];
 			
-			for (int x = 0; x < 128; x++)
+			for (int x = 0; x < sizeX; x++)
 			{
-				for (int y = 0; y < 128; y++)
+				for (int y = 0; y < sizeY; y++)
 				{
 					world[x, y] = new Block();
 					world[x, y].type = UnityEngine.Random.Range(0, 2);

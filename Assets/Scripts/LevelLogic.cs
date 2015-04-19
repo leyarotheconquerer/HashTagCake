@@ -5,8 +5,8 @@ using AssemblyCSharp;
 
 public class LevelLogic : MonoBehaviour {
 
-	const int mapSizeX = 128;
-	const int mapSizeY = 128;
+	const int mapSizeX = 100;
+	const int mapSizeY = 100;
 
 	LevelGenerator generator;
 	Level map;
@@ -72,11 +72,13 @@ public class LevelLogic : MonoBehaviour {
 
 		for (int i = 0; i < mapSizeX; i++) 
 		{
-			positionX = 0.0f;
+			positionY = 0.0f;
+
 
 
 			for (int j = 0; j < mapSizeY; j++)
 			{
+
 				GameObject newobject = (GameObject)Instantiate(tiles[map.world[i,j].type].gameObject, new Vector3(positionX, positionY, 2.0f), new Quaternion());
 				levelTiles.Add(newobject);
 				if (map.world[i,j].type == 2)  //an enter tile was spawned
@@ -92,10 +94,10 @@ public class LevelLogic : MonoBehaviour {
 					ExitLogic eLogic = newobject.GetComponentInChildren<ExitLogic>();
 					eLogic.level = this;
 				}
-				positionX += tileSize;
+				positionY += tileSize;
 			
 			}
-			positionY += tileSize;
+			positionX += tileSize;
 		}
 
 	}

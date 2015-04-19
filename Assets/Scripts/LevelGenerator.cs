@@ -20,10 +20,14 @@ public class LevelGenerator {
 
 	public Level GenerateLevel() {
 		level = GenerateLevel(level);
-		
+
+		int mapsMade = 1;
+
 		while (!IsFeasible())
 		{
 			level = GenerateLevel(level);
+			mapsMade++;
+			Debug.Log("maps made:  " + mapsMade);
 		}
 
 		return level;
@@ -110,7 +114,7 @@ public class LevelGenerator {
 		xAround.low = Mathf.Max(0, exitX - 1);
 		xAround.high = Mathf.Min(level.sizeX - 1, exitX + 1);
 		yAround.low = Mathf.Max(0, exitY - 1);
-		yAround.high = Mathf.Min(level.sizeY, exitY + 1);
+		yAround.high = Mathf.Min(level.sizeY - 1, exitY + 1);
 		
 		// If entrance (x,y) equals exit (x,y), get new (x,y) for exit
 		while (exitX == enterX && exitY == enterY || TooManySolids(exitX, exitY, xAround, yAround))
