@@ -43,6 +43,8 @@ public class PlayerMovementController : MonoBehaviour {
 		// Update animator!
 		if(CharacterAnimator) {
 			CharacterAnimator.SetFloat("Speed", Mathf.Abs(calculatedSpeed));
+			CharacterAnimator.SetFloat("Vertical Speed", rigidbody2D.velocity.y);
+			CharacterAnimator.SetBool("In Air", inAir);
 			CharacterAnimator.SetBool("Running", Input.GetButton("Movement Modifier") && Mathf.Abs(calculatedSpeed) > Speed);
 		}
 	}
