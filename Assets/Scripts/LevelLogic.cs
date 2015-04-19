@@ -5,13 +5,8 @@ using AssemblyCSharp;
 
 public class LevelLogic : MonoBehaviour {
 
-<<<<<<< HEAD
 	const int mapSizeX = 100;
 	const int mapSizeY = 100;
-=======
-	const int mapSizeX = 90;
-	const int mapSizeY = 90;
->>>>>>> d0fee9a78f186c14b4cf955453157cc56b89f424
 
 	LevelGenerator generator;
 	Level map = null;
