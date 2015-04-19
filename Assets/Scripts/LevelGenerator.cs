@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class LevelGeneration : MonoBehaviour {
+public class LevelGenerator : MonoBehaviour {
 
 	private struct Range
 	{
@@ -95,7 +95,7 @@ public class LevelGeneration : MonoBehaviour {
 	public Level level;
 
 	// Use this for initialization
-	public LevelGeneration () {
+	public LevelGenerator () {
 		level = new Level ();
 	}
 
