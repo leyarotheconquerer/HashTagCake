@@ -15,6 +15,12 @@ public class Unit : MonoBehaviour {
 	public List<Characteristic> CharacteristicArray;
 	public SortedDictionary<int, HashSet<Characteristic>> Characteristics;
 
+	public GameObject AddObject;
+	public GameObject ReplaceObject;
+
+	public Transform WeaponHand;
+	public float WeaponOffset;
+
 	public bool Dirty = true;
 
 	private int baseMaxHealth;
@@ -41,14 +47,25 @@ public class Unit : MonoBehaviour {
 			RecalculateCharacteristics();
 			Dirty = false;
 		}
+
+		if(Input.GetKeyDown(KeyCode.A)) {
+			AddWeapon((GameObject)Instantiate(AddObject));
+		}
+
+		if(Input.GetKeyDown(KeyCode.R)) {
+			ReplaceWeapon((GameObject)Instantiate(ReplaceObject));
+		}
 	}
 
 	void RecalculateCharacteristics() {
 		MaxHealth = baseMaxHealth;
 		Speed = baseSpeed;
 		Armor = baseArmor;
-		Weapon.Reset();
-		Weapon.CalculateCharacteristics();
+
+		if(Weapon) {
+			Weapon.Reset();
+			Weapon.CalculateCharacteristics();
+		}
 
 		foreach (var key in Characteristics.Keys) {
 			HashSet<Characteristic> charCategory;
@@ -61,6 +78,32 @@ public class Unit : MonoBehaviour {
 		}
 
 		OutputStats();
+	}
+
+	public void ReplaceWeapon(GameObject weapon) {
+		Weapon weaponObject = weapon.GetComponent<Weapon>();
+
+		Weapon = weaponObject;
+		weaponObject.HoldingUnit = this;
+
+		weapon.transform.SetParent(WeaponHand, false);
+	}
+	
+	public void AddWeapon(GameObject weapon) {
+		if(Weapon)
+		{
+			Weapon weaponObject = weapon.GetComponent<Weapon>();
+
+			Weapon.AddSubWeapon(weaponObject);
+
+			weaponObject.transform.SetParent(WeaponHand, false);
+
+			weapon.transform.Translate(Random.insideUnitCircle * WeaponOffset);
+			weapon.transform.Rotate(Vector3.forward * Random.value * 180);
+		}
+		else {
+			ReplaceWeapon(weapon);
+		}
 	}
 
 	public void AddCharacteristic(Characteristic characteristic) {
@@ -96,12 +139,16 @@ public class Unit : MonoBehaviour {
 			output += "    " + element + ": " + Armor[element] + "\n";
 		}
 		output += "I have a weapon with elemental strengths:\n";
-		if (Weapon.Strength != null) {
-			foreach (string element in Weapon.Strength.Keys) {
-				output += "    " + element + ": " + Weapon.Strength [element] + "\n";
+		if (Weapon) {
+			if(Weapon.Strength != null)
+			{
+				foreach (string element in Weapon.Strength.Keys) {
+					output += "    " + element + ": " + Weapon.Strength [element] + "\n";
+				}
 			}
+			output += "I have a weapon with " + Weapon.Speed + " speed\n";
 		}
-		output += "I have a weapon with " + Weapon.Speed + " speed\n";
+
 
 		Debug.Log(output);
 	}
