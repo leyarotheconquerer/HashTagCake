@@ -27,10 +27,10 @@ public class LevelLogic : MonoBehaviour {
 	List<GameObject> levelTiles = new List<GameObject>();
 
 	// Use this for initialization
-	void Start () 
+	void Start ()
 	{
 
-		if (PlayerLogic.player == null) 
+		if (PlayerLogic.player == null)
 		{
 			Debug.Log("create player");
 			PlayerLogic.player = (GameObject)Instantiate(playerPrefab);
@@ -43,11 +43,11 @@ public class LevelLogic : MonoBehaviour {
 
 		generator = new LevelGenerator ();
 
-		if (NextLevel.nextLevel != null) 
+		if (NextLevel.nextLevel != null)
 		{
 						map = NextLevel.nextLevel;
 		}
-		else 
+		else
 		{
 			map = generator.GenerateLevel();
 		}
@@ -60,7 +60,7 @@ public class LevelLogic : MonoBehaviour {
 	public System.Collections.IEnumerator GetLevel() {
 //		generator = new LevelGenerator();
 //		Level tmpmap = generator.GenerateLevel();
-		while (! LoadingNextLevel()) 
+		while (! LoadingNextLevel())
 			yield return "";
 
 		NextLevelFinished ();
@@ -74,20 +74,20 @@ public class LevelLogic : MonoBehaviour {
 	public void NextLevelFinished() {
 		NextLevelLoaded = true;
 	}
-	
+
 	// Update is called once per frame
-	void Update () 
+	void Update ()
 	{
 
 	}
 
 	void drawMap()
 	{
-			
+
 		float positionX = 0.0f;
 		float positionY = 0.0f;
 
-		for (int i = 0; i < mapSizeX; i++) 
+		for (int i = 0; i < mapSizeX; i++)
 		{
 			positionY = 0.0f;
 
@@ -98,6 +98,9 @@ public class LevelLogic : MonoBehaviour {
 
 				GameObject newobject = (GameObject)Instantiate(tiles[map.world[i,j].type].gameObject, new Vector3(positionX, positionY, 2.0f), new Quaternion());
 				levelTiles.Add(newobject);
+
+				newobject.transform.SetParent(transform); // :D
+
 				if (map.world[i,j].type == 2)  //an enter tile was spawned
 				{
 
@@ -124,7 +127,7 @@ public class LevelLogic : MonoBehaviour {
 					newobject.layer = 1;
 				}
 				positionY += tileSize;
-			
+
 			}
 			positionX += tileSize;
 		}
@@ -136,7 +139,7 @@ public class LevelLogic : MonoBehaviour {
 		levelsComplete++;
 		PlayerPrefs.SetInt("LevelsComplete", levelsComplete);
 		Application.LoadLevel ("testScene");
-		
+
 	}
 
 }
