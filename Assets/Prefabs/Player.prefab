@@ -251,11 +251,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inAir: 1
-  Speed: 4
-  AlternateSpeedModifier: 1.79999995
-  JumpForce: 500
+  Speed: 6
+  AlternateSpeedModifier: 2.4000001
+  JumpForce: 1000
   JumpCooldown: .200000003
-  JetpackForce: 10
+  JetpackForce: 20
   GroundCheckPosition: {fileID: 410640}
   GroundCheckRadius: .0399999991
   GroundLayer:
