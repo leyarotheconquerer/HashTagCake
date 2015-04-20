@@ -614,4 +614,18 @@ AnimationClip:
     path: WeaponHand
     classID: 4
     script: {fileID: 0}
-  m_Events: []
+  m_Events:
+  - time: .100000001
+    functionName: BeginAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: .183333337
+    functionName: EndAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

@@ -145,12 +145,16 @@ MonoBehaviour:
   Speed: 4
   AlternateSpeedModifier: 1.79999995
   JumpForce: 500
+  JumpCooldown: .200000003
+  JetpackForce: 2
   GroundCheckPosition: {fileID: 470256}
   GroundCheckRadius: .0399999991
   GroundLayer:
     serializedVersion: 2
     m_Bits: 256
   CharacterAnimator: {fileID: 9570256}
+  JetpackParticles: {fileID: 0}
+  unit: {fileID: 0}
 --- !u!114 &11470258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,8 +172,6 @@ MonoBehaviour:
   InitialArmor: .100000001
   Weapon: {fileID: 0}
   CharacteristicArray: []
-  AddObject: {fileID: 0}
-  ReplaceObject: {fileID: 0}
   WeaponHand: {fileID: 470258}
   WeaponOffset: 0
   Dirty: 1

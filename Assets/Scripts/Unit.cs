@@ -15,9 +15,6 @@ public class Unit : MonoBehaviour {
 	public List<Characteristic> CharacteristicArray;
 	public SortedDictionary<int, HashSet<Characteristic>> Characteristics;
 
-	public GameObject AddObject;
-	public GameObject ReplaceObject;
-
 	public Transform WeaponHand;
 	public float WeaponOffset;
 
@@ -44,21 +41,6 @@ public class Unit : MonoBehaviour {
 		if (Dirty) {
 			RecalculateCharacteristics();
 			Dirty = false;
-		}
-
-		if(ReplaceObject || AddObject) {
-			if(Input.GetKeyDown(KeyCode.A)) {
-				AddWeapon((GameObject)Instantiate(AddObject));
-			}
-
-			if(Input.GetKeyDown(KeyCode.R)) {
-				Weapon oldWeapon = ReplaceWeapon((GameObject)Instantiate(ReplaceObject));
-
-				if(oldWeapon) {
-					oldWeapon.DestroySubWeapons();
-					Destroy(oldWeapon.gameObject);
-				}
-			}
 		}
 	}
 
@@ -97,6 +79,7 @@ public class Unit : MonoBehaviour {
 
 		weapon.transform.SetParent(WeaponHand, false);
 
+		Dirty = true;
 
 		return oldWeapon;
 	}
@@ -118,6 +101,8 @@ public class Unit : MonoBehaviour {
 
 			ReplaceWeapon(weapon);
 		}
+
+		Dirty = true;
 	}
 
 	public void AddCharacteristic(Characteristic characteristic) {
@@ -160,7 +145,7 @@ public class Unit : MonoBehaviour {
 				Health -= weaponStrengths[elementType];
 			}
 			else {
-				Health -= (int)(weaponStrengths[elementType] * (1.0f - Armor[elementType]));
+				Health -= (int)(weaponStrengths[elementType] * Mathf.Max((1.0f - Armor[elementType]), 0.999f));
 			}
 		}
 	}
