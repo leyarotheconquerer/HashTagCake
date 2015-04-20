@@ -114,7 +114,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: 07bd3ae213be5834f85fe1fd3e864d89, type: 2}
   m_IsTrigger: 0
-  m_Radius: .276853323
+  m_Radius: .264947414
   m_Center: {x: 0, y: -.370000005}
 --- !u!58 &5856768
 CircleCollider2D:
