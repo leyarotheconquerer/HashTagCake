@@ -258,7 +258,7 @@ Transition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: Vertical Speed
-    m_EventTreshold: 0
+    m_EventTreshold: .100000001
     m_ExitTime: .899999976
   - m_ConditionMode: 2
     m_ConditionEvent: Dying
@@ -431,21 +431,6 @@ State:
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
---- !u!1102 &110209148
-State:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: RoboGeishaAttack
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Motions:
-  - {fileID: 7400000, guid: 8c7cd6d9eec702d47a32b3c7a33e327b, type: 2}
-  m_ParentStateMachine: {fileID: 110732744}
-  m_Position: {x: -493, y: -283, z: 0}
-  m_IKOnFeet: 0
-  m_Mirror: 0
-  m_Tag: 
 --- !u!1102 &110227532
 State:
   m_ObjectHideFlags: 3
@@ -455,7 +440,7 @@ State:
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 7400000, guid: 4e61bf3515044a545b05a9fa9d3f5b48, type: 2}
+  - {fileID: 7400000, guid: 8c7cd6d9eec702d47a32b3c7a33e327b, type: 2}
   m_ParentStateMachine: {fileID: 110732744}
   m_Position: {x: -264, y: -456, z: 0}
   m_IKOnFeet: 0
@@ -616,7 +601,6 @@ StateMachine:
   - {fileID: 110268142}
   - {fileID: 110227532}
   - {fileID: 110232688}
-  - {fileID: 110209148}
   m_ChildStateMachine: []
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
@@ -628,26 +612,6 @@ StateMachine:
       - {fileID: 110146452}
       - {fileID: 110163382}
     data:
-      first: {fileID: 110208448}
-      second:
-      - {fileID: 110111930}
-      - {fileID: 110131690}
-    data:
-      first: {fileID: 110227532}
-      second:
-      - {fileID: 110150352}
-    data:
-      first: {fileID: 110232688}
-      second: []
-    data:
-      first: {fileID: 110234508}
-      second:
-      - {fileID: 110114194}
-    data:
-      first: {fileID: 110235392}
-      second:
-      - {fileID: 110142906}
-    data:
       first: {fileID: 110240006}
       second:
       - {fileID: 110124814}
@@ -657,22 +621,42 @@ StateMachine:
       - {fileID: 110166570}
       - {fileID: 110126894}
     data:
-      first: {fileID: 110268142}
-      second:
-      - {fileID: 110108012}
-    data:
-      first: {fileID: 110282096}
-      second:
-      - {fileID: 110156402}
-    data:
       first: {fileID: 110286028}
       second:
       - {fileID: 110105234}
       - {fileID: 110101670}
     data:
+      first: {fileID: 110234508}
+      second:
+      - {fileID: 110114194}
+    data:
+      first: {fileID: 110235392}
+      second:
+      - {fileID: 110142906}
+    data:
       first: {fileID: 110291548}
       second:
       - {fileID: 110100484}
+    data:
+      first: {fileID: 110208448}
+      second:
+      - {fileID: 110111930}
+      - {fileID: 110131690}
+    data:
+      first: {fileID: 110282096}
+      second:
+      - {fileID: 110156402}
+    data:
+      first: {fileID: 110268142}
+      second:
+      - {fileID: 110108012}
+    data:
+      first: {fileID: 110227532}
+      second:
+      - {fileID: 110150352}
+    data:
+      first: {fileID: 110232688}
+      second: []
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: -240, y: -336, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

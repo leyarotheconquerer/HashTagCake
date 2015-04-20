@@ -40,8 +40,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3602e14f2a24f5d45a59f77e549c6f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemies:
+  SceneParent: Enemies
+  SpawningLocation: {fileID: 453384}
+  Spawnables:
   - {fileID: 132090, guid: ef76cb76d898b3f4283e241c774daa60, type: 2}
+  - {fileID: 130522, guid: bb2054690f0affa44aceaf857e66240e, type: 2}
 --- !u!212 &21253384
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -42,7 +42,6 @@ public class PlayerMovementController : MonoBehaviour {
 			JetpackParticles.Stop();
 
 		if(!inAir && Input.GetButtonDown("Jump")) {
-			Debug.Log("I am jumping");
 			rigidbody2D.AddForce(new Vector2(0f, JumpForce));
 			jetpackEnabledTime = Time.time + JumpCooldown;
 		} else if(inAir && Time.time >= jetpackEnabledTime) {
@@ -58,7 +57,6 @@ public class PlayerMovementController : MonoBehaviour {
 		}
 
 		if (Input.GetButtonDown ("Fire1")) {
-			Debug.Log("Firing");
 			rigidbody2D.Sleep();
 			CharacterAnimator.SetTrigger("Attack");
 		}
