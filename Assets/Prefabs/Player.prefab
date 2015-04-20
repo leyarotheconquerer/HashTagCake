@@ -191,7 +191,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110638}
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: .800000012
   m_AngularDrag: .0500000007
   m_GravityScale: 1
   m_FixedAngle: 1
@@ -255,7 +255,7 @@ MonoBehaviour:
   AlternateSpeedModifier: 1.79999995
   JumpForce: 500
   JumpCooldown: .200000003
-  JetpackForce: 20
+  JetpackForce: 10
   GroundCheckPosition: {fileID: 410640}
   GroundCheckRadius: .0399999991
   GroundLayer:
