@@ -178,6 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneName: testScene
   ResetPlayer: 1
+  ResetLevel: 1
 --- !u!114 &11440792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,6 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneName: Title
   ResetPlayer: 1
+  ResetLevel: 0
 --- !u!114 &11440794
 MonoBehaviour:
   m_ObjectHideFlags: 1

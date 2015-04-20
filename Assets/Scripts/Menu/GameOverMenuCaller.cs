@@ -5,7 +5,7 @@ public class GameOverMenuCaller : MonoBehaviour {
 	public Unit Player;
 
 	protected GameObject menu;
-
+	
 	void Update () {
 		if(Player && Player.IsDead() && !menu) {
 			menu = (GameObject)Instantiate(Resources.Load("Menu/GameOverMenuCanvas"));
