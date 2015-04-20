@@ -42,11 +42,13 @@ public class Weapon : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D collider) {
+		Debug.Log("Hit something " + collider.gameObject.name);
 		if (collider.tag == "Player" && HoldingUnit == null) 
 		{
 			collider.GetComponent<Unit>().AddWeapon(this.gameObject);
 		}
-		else if((Hittable.value & (1<<collider.gameObject.layer)) > 0 && 
+
+		if((Hittable.value & (1<<collider.gameObject.layer)) > 0 && 
 		   collider.gameObject != HoldingUnit.gameObject) {
 			Debug.Log("Cows are happening (" + gameObject.name + " hitting " + collider.gameObject.name + ")");
 
