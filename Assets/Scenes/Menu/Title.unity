@@ -177,6 +177,7 @@ GameObject:
   - 222: {fileID: 929662737}
   - 114: {fileID: 929662736}
   - 114: {fileID: 929662735}
+  - 114: {fileID: 929662738}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -198,8 +199,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -18.5, y: 17}
-  m_SizeDelta: {x: -934.599976, y: -552.599976}
+  m_AnchoredPosition: {x: -18, y: 17}
+  m_SizeDelta: {x: -1049, y: -522}
   m_Pivot: {x: 1, y: 2.98023224e-08}
 --- !u!114 &929662735
 MonoBehaviour:
@@ -239,7 +240,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 929662736}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 929662738}
+        m_MethodName: ChangeScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &929662736
@@ -269,6 +282,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 929662733}
+--- !u!114 &929662738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 929662733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 830ffcadf03b7dd4b9625abee3d9cebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneName: testScene
 --- !u!1 &1036564100
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,7 +483,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 14, y: -9}
-  m_SizeDelta: {x: -350.899994, y: -337}
+  m_SizeDelta: {x: -528, y: -305}
   m_Pivot: {x: 2.23517418e-08, y: 1}
 --- !u!114 &1955017169
 MonoBehaviour:
