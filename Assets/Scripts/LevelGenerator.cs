@@ -30,6 +30,38 @@ public class LevelGenerator {
 			Debug.Log("maps made:  " + mapsMade);
 		}
 
+		Range xAround = new Range ();
+		Range yAround = new Range ();
+
+		for (int y = 1; y < level.sizeY - 1; y++) {
+			for (int x = 1; x < level.sizeX - 1; x++) {
+				xAround.low = Mathf.Max (0, x - 1);
+				xAround.high = Mathf.Min (level.sizeX - 1, x + 1);
+				yAround.low = Mathf.Max (0, y - 1);
+				yAround.high = Mathf.Min (level.sizeY - 1, y + 1);
+
+				if (!TooManySolids(x, y, xAround, yAround) && (level.world[x, yAround.low].type == 0) &&
+				    (level.world[x,y].type != 3 || level.world[x,y].type != 2)) {
+					int weaponSpawn = 150;
+					int monsterSpawn = weaponSpawn + 100 + 5*PlayerPrefs.GetInt("LevelsCompleted");
+					if (monsterSpawn > 500) {
+					    monsterSpawn = 500;
+					}
+
+					int spawn = Random.Range (0, 1000);
+
+					if (spawn < weaponSpawn) {
+						level.world[x, y].type = 5;
+					}
+					else if (spawn < monsterSpawn) {
+						level.world[x, y].type = 4;
+					}
+					else {
+						continue;
+					}
+				}
+			}
+		}
 		return level;
 	}
 
@@ -158,7 +190,7 @@ public class LevelGenerator {
 		level.world[exitX - 1, exitY - 1].type = 0;
 		level.world[exitX + 1, exitY - 1].type = 0;
 		level.exit = new Point(exitX, exitY);
-		
+
 		return level;
 	}
 

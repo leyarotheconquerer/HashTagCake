@@ -39,15 +39,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eba0dd8082c58b746b030c170c3ac97e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelPrefab: {fileID: 100000}
+  NextLevelLoaded: 0
   levelsComplete: 0
-  playerPrefab: {fileID: 0}
+  playerPrefab: {fileID: 110638, guid: 0b541a58f91919c419fe03abc5dfcddf, type: 2}
   tiles:
   - {fileID: 400000, guid: 43bd890070b638842964d211188f47f0, type: 2}
   - {fileID: 400000, guid: 10e8b9bf75a66724290793934e1d7816, type: 2}
   - {fileID: 400000, guid: fc355175853e19e488a2aa77f08e0737, type: 2}
   - {fileID: 400002, guid: 49d54400b41d6704da0336223a71786c, type: 2}
-  - {fileID: 400002, guid: 7a01fb003232f084bb2ec76a2dde2c36, type: 2}
-  - {fileID: 400000, guid: 834d604511d3224499aac2e12485ac38, type: 2}
+  - {fileID: 416970, guid: 7a01fb003232f084bb2ec76a2dde2c36, type: 2}
+  - {fileID: 453384, guid: 834d604511d3224499aac2e12485ac38, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
