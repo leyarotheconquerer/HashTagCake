@@ -294,6 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName: testScene
+  ResetPlayer: 0
 --- !u!1 &1036564100
 GameObject:
   m_ObjectHideFlags: 0
