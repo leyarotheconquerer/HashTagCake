@@ -93,8 +93,10 @@ public class Unit : MonoBehaviour {
 
 		Weapon = weaponObject;
 		weaponObject.HoldingUnit = this;
+		weaponObject.transform.position = Vector3.zero;
 
 		weapon.transform.SetParent(WeaponHand, false);
+
 
 		return oldWeapon;
 	}
@@ -105,6 +107,7 @@ public class Unit : MonoBehaviour {
 			Weapon weaponObject = weapon.GetComponent<Weapon>();
 
 			Weapon.AddSubWeapon(weaponObject);
+			weaponObject.transform.position = Vector3.zero;
 
 			weaponObject.transform.SetParent(WeaponHand, false);
 
@@ -112,6 +115,7 @@ public class Unit : MonoBehaviour {
 			weapon.transform.Rotate(Vector3.forward * Random.value * 180);
 		}
 		else {
+
 			ReplaceWeapon(weapon);
 		}
 	}

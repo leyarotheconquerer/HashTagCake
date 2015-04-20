@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11439760}
   - 114: {fileID: 11439758}
   - 61: {fileID: 6130662}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Twig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139758}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Size: {x: .261211336, y: .639999986}

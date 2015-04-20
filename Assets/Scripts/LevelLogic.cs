@@ -21,7 +21,7 @@ public class LevelLogic : MonoBehaviour {
 
 	GameObject player;
 
-	float tileSize = 5.12f;
+	float tileSize = 5.12f / 2f;
 	float playerSize = 1.28f;
 
 	List<GameObject> levelTiles = new List<GameObject>();
