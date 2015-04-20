@@ -111,6 +111,18 @@ public class LevelLogic : MonoBehaviour {
 					ExitLogic eLogic = newobject.GetComponentInChildren<ExitLogic>();
 					eLogic.level = this;
 				}
+				else if (map.world[i,j].type == 4) //Enemy spawned
+				{
+					GameObject background = (GameObject)Instantiate(tiles[1].gameObject, new Vector3(positionX, positionY, 2.0f), new Quaternion());
+					background.layer = 0;
+					newobject.layer = 1;
+				}
+				else if (map.world[i,j].type == 5) //Weapon spawned
+				{
+					GameObject background = (GameObject)Instantiate(tiles[1].gameObject, new Vector3(positionX, positionY, 2.0f), new Quaternion());
+					background.layer = 0;
+					newobject.layer = 1;
+				}
 				positionY += tileSize;
 			
 			}
