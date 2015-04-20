@@ -151,7 +151,7 @@ Camera:
   near clip plane: .300000012
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
@@ -171,7 +171,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 59401318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -207,7 +207,7 @@ MonoBehaviour:
   levelPrefab: {fileID: 473209013}
   NextLevelLoaded: 0
   levelsComplete: 0
-  playerPrefab: {fileID: 110638, guid: 0b541a58f91919c419fe03abc5dfcddf, type: 2}
+  playerPrefab: {fileID: 110638, guid: e6b13afde759eb24d99657de84663cb7, type: 2}
   tiles:
   - {fileID: 400000, guid: 43bd890070b638842964d211188f47f0, type: 2}
   - {fileID: 400000, guid: 10e8b9bf75a66724290793934e1d7816, type: 2}
@@ -269,7 +269,7 @@ Prefab:
     - target: {fileID: 11400000, guid: b7513d9cf589e294b9702ac82e7c9ff7, type: 2}
       propertyPath: playerPrefab
       value: 
-      objectReference: {fileID: 110638, guid: 0b541a58f91919c419fe03abc5dfcddf, type: 2}
+      objectReference: {fileID: 110638, guid: e6b13afde759eb24d99657de84663cb7, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b7513d9cf589e294b9702ac82e7c9ff7, type: 2}
   m_RootGameObject: {fileID: 473209013}
