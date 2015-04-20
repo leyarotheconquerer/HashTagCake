@@ -21,9 +21,8 @@ public class PlayerMovementController : MonoBehaviour {
 
 	protected float jetpackEnabledTime;
 	protected bool facingRight = true;
-
-
-	protected Unit unit;
+	
+	public Unit unit;
 
 	public void Start() {
 		unit = GetComponent<Unit>();
@@ -58,7 +57,7 @@ public class PlayerMovementController : MonoBehaviour {
 			CharacterAnimator.SetTrigger("Attack");
 		}
 
-		if(unit.IsDead()) {
+		if(unit != null && unit.IsDead()) {
 			if(!CharacterAnimator.GetBool("Dying")) {
 				CharacterAnimator.SetBool("Dying", true);
 			}

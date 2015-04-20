@@ -73,6 +73,7 @@ NavMeshSettings:
     minRegionArea: 2
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
+    tileSizeHint: 0
   m_NavMesh: {fileID: 0}
 --- !u!1 &473209013
 GameObject:
@@ -105,7 +106,7 @@ MonoBehaviour:
   levelPrefab: {fileID: 0}
   NextLevelLoaded: 0
   levelsComplete: 0
-  playerPrefab: {fileID: 100002, guid: e6b13afde759eb24d99657de84663cb7, type: 2}
+  playerPrefab: {fileID: 110638, guid: 0b541a58f91919c419fe03abc5dfcddf, type: 2}
   tiles:
   - {fileID: 400000, guid: 43bd890070b638842964d211188f47f0, type: 2}
   - {fileID: 400000, guid: 10e8b9bf75a66724290793934e1d7816, type: 2}
@@ -175,7 +176,7 @@ Prefab:
     - target: {fileID: 11400000, guid: b7513d9cf589e294b9702ac82e7c9ff7, type: 2}
       propertyPath: playerPrefab
       value: 
-      objectReference: {fileID: 100002, guid: e6b13afde759eb24d99657de84663cb7, type: 2}
+      objectReference: {fileID: 110638, guid: 0b541a58f91919c419fe03abc5dfcddf, type: 2}
     - target: {fileID: 11400000, guid: b7513d9cf589e294b9702ac82e7c9ff7, type: 2}
       propertyPath: tiles.Array.data[1]
       value: 
