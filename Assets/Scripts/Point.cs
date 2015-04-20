@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace AssemblyCSharp
 {
-	public class Point
+	public class Point : IEquatable<Point>
 	{
 		public int x;
 		public int y;
@@ -32,6 +32,10 @@ namespace AssemblyCSharp
 		public int DistanceTo(Point dest)
 		{
 			return (int)Mathf.Round(Mathf.Sqrt((dest.x - this.x) * (dest.x - this.x) + (dest.y - this.y) * (dest.y - this.y)));
+		}
+
+		public bool Equals(Point other) {
+			return (x == other.x) &&  (y == other.y);
 		}
 	}
 }
