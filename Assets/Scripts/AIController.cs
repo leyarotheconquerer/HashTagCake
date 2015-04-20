@@ -50,7 +50,7 @@ public class AIController : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		float distToPlayer = (PlayerLogic.player.transform.position - transform.position).magnitude;
+		float distToPlayer = (PlayerLogic.player ? Vector3.Distance(PlayerLogic.player.transform.position, transform.position) : float.PositiveInfinity);
 
 		if(GroundCheckPosition)
 			foundEdge = !Physics2D.OverlapCircle(GroundCheckPosition.position, GroundCheckRadius, GroundLayer);
