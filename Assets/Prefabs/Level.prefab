@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11421250}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -42,7 +43,10 @@ MonoBehaviour:
   levelPrefab: {fileID: 100000}
   NextLevelLoaded: 0
   levelsComplete: 0
-  playerPrefab: {fileID: 110638, guid: 0b541a58f91919c419fe03abc5dfcddf, type: 2}
+  PlayerPrefabs:
+  - {fileID: 130522, guid: 86692372cd9ca624d9bb07aa216dff96, type: 2}
+  - {fileID: 132090, guid: 103d8649c42391244a4f6cb417250cbc, type: 2}
+  - {fileID: 170260, guid: 3292fe4eab56a2649936975694523af9, type: 2}
   tiles:
   - {fileID: 400000, guid: 43bd890070b638842964d211188f47f0, type: 2}
   - {fileID: 400000, guid: 10e8b9bf75a66724290793934e1d7816, type: 2}
@@ -50,6 +54,18 @@ MonoBehaviour:
   - {fileID: 400002, guid: 49d54400b41d6704da0336223a71786c, type: 2}
   - {fileID: 416970, guid: 7a01fb003232f084bb2ec76a2dde2c36, type: 2}
   - {fileID: 453384, guid: 834d604511d3224499aac2e12485ac38, type: 2}
+--- !u!114 &11421250
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c843a2283c9db14287273b297c7399b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

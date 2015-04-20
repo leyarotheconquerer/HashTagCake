@@ -41,9 +41,10 @@ GameObject:
   - 212: {fileID: 21270256}
   - 95: {fileID: 9570256}
   - 114: {fileID: 11470258}
-  - 114: {fileID: 11470256}
-  - 61: {fileID: 6170256}
+  - 114: {fileID: 11492480}
   - 50: {fileID: 5070256}
+  - 58: {fileID: 5872314}
+  - 58: {fileID: 5872312}
   m_Layer: 9
   m_Name: ScorpionHorseshoeCrab
   m_TagString: Untagged
@@ -104,8 +105,8 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!61 &6170256
-BoxCollider2D:
+--- !u!58 &5872312
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -113,8 +114,19 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 1.16961169, y: 1.0224278}
-  m_Center: {x: .0341677666, y: -.128786057}
+  m_Radius: .323702812
+  m_Center: {x: -.25, y: 0}
+--- !u!58 &5872314
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170260}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .400000006
+  m_Center: {x: .150000006, y: -.300000012}
 --- !u!95 &9570256
 Animator:
   serializedVersion: 3
@@ -130,31 +142,6 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11470256
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b542ba1984e4aa4194a21ba91ba32d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inAir: 1
-  Speed: 4
-  AlternateSpeedModifier: 1.79999995
-  JumpForce: 500
-  JumpCooldown: .200000003
-  JetpackForce: 2
-  GroundCheckPosition: {fileID: 470256}
-  GroundCheckRadius: .0399999991
-  GroundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  CharacterAnimator: {fileID: 9570256}
-  JetpackParticles: {fileID: 0}
-  unit: {fileID: 0}
 --- !u!114 &11470258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -175,6 +162,32 @@ MonoBehaviour:
   WeaponHand: {fileID: 470258}
   WeaponOffset: 0
   Dirty: 1
+--- !u!114 &11492480
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6858ce9a0d43fa40afebed06f7f3c55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 4
+  AlternateSpeedModifier: 1.79999995
+  GroundCheckPosition: {fileID: 470256}
+  GroundCheckRadius: .0399999991
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  CharacterAnimator: {fileID: 9570256}
+  IdleTime: 5
+  WalkTime: 5
+  detectionField: 5
+  attackField: 2.5
+  unit: {fileID: 11470258}
+  AIState: 0
+  attackAble: 1
 --- !u!212 &21270256
 SpriteRenderer:
   m_ObjectHideFlags: 1

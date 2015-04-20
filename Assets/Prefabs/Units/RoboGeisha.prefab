@@ -39,8 +39,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 430522}
   - 212: {fileID: 21230518}
-  - 61: {fileID: 6130518}
   - 50: {fileID: 5030518}
+  - 58: {fileID: 5848214}
+  - 58: {fileID: 5848212}
   - 95: {fileID: 9530518}
   - 114: {fileID: 11430520}
   - 114: {fileID: 11430518}
@@ -82,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130522}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: .419999987, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 430520}
@@ -104,8 +105,8 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!61 &6130518
-BoxCollider2D:
+--- !u!58 &5848212
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -113,8 +114,19 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .886276186, y: 1.27999997}
-  m_Center: {x: -.0432135761, y: 0}
+  m_Radius: .421211541
+  m_Center: {x: 0, y: .159999996}
+--- !u!58 &5848214
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130522}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .318845332
+  m_Center: {x: 0, y: -.340000004}
 --- !u!95 &9530518
 Animator:
   serializedVersion: 3

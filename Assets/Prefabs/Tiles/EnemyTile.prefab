@@ -45,6 +45,7 @@ MonoBehaviour:
   Spawnables:
   - {fileID: 132090, guid: ef76cb76d898b3f4283e241c774daa60, type: 2}
   - {fileID: 130522, guid: bb2054690f0affa44aceaf857e66240e, type: 2}
+  - {fileID: 170260, guid: e48fa68feb1f15d4b95343057932bc71, type: 2}
 --- !u!212 &21253384
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -16,7 +16,7 @@ public class LevelLogic : MonoBehaviour {
 
 	public int levelsComplete = 0;
 
-	public GameObject playerPrefab;
+	public List<GameObject> PlayerPrefabs;
 	public Transform[] tiles;
 
 	GameObject player;
@@ -33,7 +33,8 @@ public class LevelLogic : MonoBehaviour {
 		if (PlayerLogic.player == null)
 		{
 			Debug.Log("create player");
-			PlayerLogic.player = (GameObject)Instantiate(playerPrefab);
+			int playerIndex = Random.Range(0, PlayerPrefabs.Count);
+			PlayerLogic.player = (GameObject)Instantiate(PlayerPrefabs[playerIndex]);
 			PlayerPrefs.SetInt("LevelsComplete", 0);
 
 		}

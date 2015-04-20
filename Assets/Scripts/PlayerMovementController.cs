@@ -76,12 +76,12 @@ public class PlayerMovementController : MonoBehaviour {
 			Debug.Log("ERROR: Ground Check Transform was not set.");
 
 		// Set the player's phyiscs material to zero friction if in air.
-		if(inAir) {
-			originalFriction = collider.sharedMaterial.friction;
-			collider.sharedMaterial.friction = 0f;
+		/**if(inAir) {
+			originalFriction = collider2D.sharedMaterial.friction;
+			collider2D.sharedMaterial.friction = 0f;
 		} else {
-			collider.sharedMaterial.friction = originalFriction;
-		}
+			collider2D.sharedMaterial.friction = originalFriction;
+		}*/
 
 		// Movement
 		float inputMovement = Input.GetAxis("Horizontal");
