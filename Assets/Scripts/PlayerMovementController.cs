@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerMovementController : MonoBehaviour {
 	public bool inAir = true;
@@ -22,9 +23,7 @@ public class PlayerMovementController : MonoBehaviour {
 	protected float jetpackEnabledTime;
 	protected bool facingRight = true;
 
-	protected Collider2D collider;
-
-	private float originalFriction;
+	private Dictionary<Collider2D, float> oldFrictions = new Dictionary<Collider2D, float>();
 
 	public Unit unit;
 
@@ -33,8 +32,15 @@ public class PlayerMovementController : MonoBehaviour {
 		if(!unit)
 			Debug.LogWarning("Could not find unit component for '" + gameObject.name + "'");
 
-		collider = GetComponent<Collider2D>();
-		originalFriction = collider.sharedMaterial.friction;
+		Collider2D[] colliders = GetComponents<Collider2D>();
+		foreach(Collider2D target in colliders) {
+			if(!oldFrictions.ContainsKey(target)) {
+				if(target && target.sharedMaterial)
+					oldFrictions.Add(target, target.sharedMaterial.friction);
+				else
+					Debug.Log("What? " + target);
+			}
+		}
 	}
 
 	public void Update() {
@@ -78,12 +84,20 @@ public class PlayerMovementController : MonoBehaviour {
 			Debug.Log("ERROR: Ground Check Transform was not set.");
 
 		// Set the player's phyiscs material to zero friction if in air.
+		Collider2D[] colliders = GetComponents<Collider2D>();
 		if(inAir) {
-			originalFriction = collider.sharedMaterial.friction;
-			collider.sharedMaterial.friction = 0f;
-		} else {
-			collider.sharedMaterial.friction = originalFriction;
-		}
+			foreach(Collider2D target in colliders) {
+				if(oldFrictions.ContainsKey(target))
+					oldFrictions[target] = target.sharedMaterial.friction;
+				else
+					oldFrictions.Add(target, target.sharedMaterial.friction);
+
+				target.sharedMaterial.friction = 0f;
+			}
+		} else
+			foreach(Collider2D target in colliders)
+				target.sharedMaterial.friction = oldFrictions[target];
+		//*/
 
 		// Movement
 		float inputMovement = Input.GetAxis("Horizontal");
