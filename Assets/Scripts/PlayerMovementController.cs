@@ -21,7 +21,11 @@ public class PlayerMovementController : MonoBehaviour {
 
 	protected float jetpackEnabledTime;
 	protected bool facingRight = true;
-	
+
+	protected Collider2D collider;
+
+	private float originalFriction;
+
 	public Unit unit;
 
 	public void Start() {
@@ -29,6 +33,8 @@ public class PlayerMovementController : MonoBehaviour {
 		if(!unit)
 			Debug.LogWarning("Could not find unit component for '" + gameObject.name + "'");
 
+		collider = GetComponent<Collider2D>();
+		originalFriction = collider.sharedMaterial.friction;
 	}
 
 	public void Update() {
@@ -70,6 +76,14 @@ public class PlayerMovementController : MonoBehaviour {
 			inAir = !Physics2D.OverlapCircle(GroundCheckPosition.position, GroundCheckRadius, GroundLayer);
 		else
 			Debug.Log("ERROR: Ground Check Transform was not set.");
+
+		// Set the player's phyiscs material to zero friction if in air.
+		if(inAir) {
+			originalFriction = collider.sharedMaterial.friction;
+			collider.sharedMaterial.friction = 0f;
+		} else {
+			collider.sharedMaterial.friction = originalFriction;
+		}
 
 		// Movement
 		float inputMovement = Input.GetAxis("Horizontal");
