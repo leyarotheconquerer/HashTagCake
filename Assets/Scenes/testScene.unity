@@ -103,10 +103,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eba0dd8082c58b746b030c170c3ac97e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelPrefab: {fileID: 0}
+  levelPrefab: {fileID: 473209013}
   NextLevelLoaded: 0
   levelsComplete: 0
-  playerPrefab: {fileID: 110638, guid: 0b541a58f91919c419fe03abc5dfcddf, type: 2}
+  playerPrefab: {fileID: 110638, guid: e6b13afde759eb24d99657de84663cb7, type: 2}
   tiles:
   - {fileID: 400000, guid: 43bd890070b638842964d211188f47f0, type: 2}
   - {fileID: 400000, guid: 10e8b9bf75a66724290793934e1d7816, type: 2}
@@ -176,7 +176,7 @@ Prefab:
     - target: {fileID: 11400000, guid: b7513d9cf589e294b9702ac82e7c9ff7, type: 2}
       propertyPath: playerPrefab
       value: 
-      objectReference: {fileID: 110638, guid: 0b541a58f91919c419fe03abc5dfcddf, type: 2}
+      objectReference: {fileID: 110638, guid: e6b13afde759eb24d99657de84663cb7, type: 2}
     - target: {fileID: 11400000, guid: b7513d9cf589e294b9702ac82e7c9ff7, type: 2}
       propertyPath: tiles.Array.data[1]
       value: 
@@ -185,6 +185,10 @@ Prefab:
       propertyPath: tiles.Array.data[0]
       value: 
       objectReference: {fileID: 400000, guid: 43bd890070b638842964d211188f47f0, type: 2}
+    - target: {fileID: 11400000, guid: b7513d9cf589e294b9702ac82e7c9ff7, type: 2}
+      propertyPath: levelPrefab
+      value: 
+      objectReference: {fileID: 473209013}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b7513d9cf589e294b9702ac82e7c9ff7, type: 2}
   m_RootGameObject: {fileID: 473209013}
