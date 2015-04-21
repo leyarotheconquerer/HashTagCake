@@ -37,7 +37,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 153384}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3602e14f2a24f5d45a59f77e549c6f90, type: 3}
+  m_Script: {fileID: 11500000, guid: ba02f606bf9a68943873627be20af121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SceneParent: Enemies
@@ -46,6 +46,9 @@ MonoBehaviour:
   - {fileID: 132090, guid: ef76cb76d898b3f4283e241c774daa60, type: 2}
   - {fileID: 130522, guid: bb2054690f0affa44aceaf857e66240e, type: 2}
   - {fileID: 170260, guid: e48fa68feb1f15d4b95343057932bc71, type: 2}
+  Weapons:
+  - {fileID: 176818, guid: 6e0fa8e76666eae48ba8df87528d12b1, type: 2}
+  - {fileID: 139758, guid: 08c6c517966fba84f9dcb2ae317f651f, type: 2}
 --- !u!212 &21253384
 SpriteRenderer:
   m_ObjectHideFlags: 1

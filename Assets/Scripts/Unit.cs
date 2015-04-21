@@ -157,6 +157,7 @@ public class Unit : MonoBehaviour {
 
 	public void OutputStats() {
 		string output = "";
+
 		output += "I am the '" + gameObject.name + "' unit\n";
 		output += "I have " + Health + "/" + MaxHealth + " health\n";
 		output += "I have " + Speed + " speed\n";
