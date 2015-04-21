@@ -112,9 +112,9 @@ CircleCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132090}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 07bd3ae213be5834f85fe1fd3e864d89, type: 2}
   m_IsTrigger: 0
-  m_Radius: .296696663
+  m_Radius: .264947414
   m_Center: {x: 0, y: -.370000005}
 --- !u!58 &5856768
 CircleCollider2D:
@@ -123,7 +123,7 @@ CircleCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132090}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: dbed43066984d3642a7fd29d0b2e44d2, type: 2}
   m_IsTrigger: 0
   m_Radius: .400000006
   m_Center: {x: 0, y: .200000003}
@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5015adc40b8897c4ead2a67d98807c08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Shadow
   Health: 100
   MaxHealth: 100
   Speed: 1
