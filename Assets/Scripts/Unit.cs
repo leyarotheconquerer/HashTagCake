@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 
 public class Unit : MonoBehaviour {
+	public string Name;
 
 	public int Health;
 	public int MaxHealth;
@@ -100,7 +101,7 @@ public class Unit : MonoBehaviour {
 
 		return oldWeapon;
 	}
-	
+
 	public void AddWeapon(GameObject weapon) {
 		if(Weapon)
 		{
