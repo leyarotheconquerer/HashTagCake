@@ -200,7 +200,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -18, y: 17}
-  m_SizeDelta: {x: -1049, y: -522}
+  m_SizeDelta: {x: -876, y: -522}
   m_Pivot: {x: 1, y: 2.98023224e-08}
 --- !u!114 &929662735
 MonoBehaviour:
@@ -295,6 +295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneName: testScene
   ResetPlayer: 0
+  ResetLevel: 0
 --- !u!1 &1036564100
 GameObject:
   m_ObjectHideFlags: 0
