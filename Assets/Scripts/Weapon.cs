@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class Weapon : MonoBehaviour {
 
+	public string Name;
+
 	public int InitialStrength;
 	public Dictionary<string, int> Strength = new Dictionary<string, int>();
 	public float Speed;

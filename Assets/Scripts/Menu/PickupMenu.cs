@@ -18,11 +18,17 @@ public class PickupMenu : MonoBehaviour {
 	public Transform currentStrengthList;
 	public Transform newStrengthList;
 
+	public Text currentWeaponTitle;
+	public Text newWeaponTitle;
+
+	public Image currentWeaponImage;
+	public Image newWeaponImage;
+
 	void Start() {
 		DontDestroyOnLoad(gameObject);
 	}
 
-	void Awake() {
+	void OnEnable() {
 		Weapon weapon = Weapon.GetComponent<Weapon>();
 
 		Unit = PlayerLogic.player.GetComponent<Unit>();
@@ -30,6 +36,8 @@ public class PickupMenu : MonoBehaviour {
 			Debug.LogWarning("Can't find the Unit component of the player");
 
 		Health.text = "Health: " + Unit.Health + "/" + Unit.MaxHealth;
+
+
 
 		if(Unit) {
 			foreach(string element in Unit.Armor.Keys) {
@@ -50,6 +58,10 @@ public class PickupMenu : MonoBehaviour {
 			}
 
 			if(Unit.Weapon) {
+				currentWeaponTitle.text = Unit.Weapon.Name;
+
+				currentWeaponImage.sprite = Unit.Weapon.GetComponent<SpriteRenderer>().sprite;
+
 				foreach(string element in Unit.Weapon.Strength.Keys) {
 					GameObject currentStrengthItem = (GameObject)Instantiate(StrengthItem);
 
@@ -70,6 +82,10 @@ public class PickupMenu : MonoBehaviour {
 		}
 
 		if(Weapon) {
+			newWeaponTitle.text = weapon.Name;
+
+			newWeaponImage.sprite = Weapon.GetComponent<SpriteRenderer>().sprite;
+
 			foreach(string element in weapon.Strength.Keys) {
 				GameObject newStrengthItem = (GameObject)Instantiate(StrengthItem);
 				
@@ -119,8 +135,23 @@ public class PickupMenu : MonoBehaviour {
 		ResetPickMenu();
 	}
 
-	void ResetPickMenu() {
+	public void ResetPickMenu() {
 		Weapon = null;
 		gameObject.SetActive(false);
+
+		currentWeaponTitle.text = "Current Weapon";
+		newWeaponTitle.text = "New Weapon";
+
+		for(int i = armorList.childCount - 1; i >= 0; --i) {
+			Destroy(armorList.GetChild(i).gameObject);
+		}
+		
+		for(int i = newStrengthList.childCount - 1; i >= 0; --i) {
+			Destroy(newStrengthList.GetChild(i).gameObject);
+		}
+		
+		for(int i = currentStrengthList.childCount - 1; i >= 0; --i) {
+			Destroy(currentStrengthList.GetChild(i).gameObject);
+		}
 	}
 }
