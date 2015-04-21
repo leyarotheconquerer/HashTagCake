@@ -18,6 +18,7 @@ public class LevelLogic : MonoBehaviour {
 
 	public List<GameObject> PlayerPrefabs;
 	public Transform[] tiles;
+	public GameObject PickMenu;
 
 	GameObject player;
 
@@ -37,6 +38,11 @@ public class LevelLogic : MonoBehaviour {
 			PlayerLogic.player = (GameObject)Instantiate(PlayerPrefabs[playerIndex]);
 			PlayerPrefs.SetInt("LevelsComplete", 0);
 
+		}
+
+		if(PickupMenu.PickMenu == null) {
+			GameObject pickMenu = (GameObject)Instantiate(PickMenu);
+			PickupMenu.PickMenu = pickMenu.GetComponent<PickupMenu>();
 		}
 
 		this.player = PlayerLogic.player;

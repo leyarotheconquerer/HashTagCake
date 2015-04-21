@@ -44,7 +44,9 @@ public class Weapon : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D collider) {
 		if (collider.tag == "Player" && HoldingUnit == null)
 		{
-			collider.GetComponent<Unit>().AddWeapon(this.gameObject);
+			PickupMenu.Weapon = gameObject;
+			PickupMenu.PickMenu.gameObject.SetActive(true);
+			//collider.GetComponent<Unit>().AddWeapon(this.gameObject);
 		}
 		else if(HoldingUnit != null) {
 			if((Hittable.value & (1<<collider.gameObject.layer)) > 0 &&
