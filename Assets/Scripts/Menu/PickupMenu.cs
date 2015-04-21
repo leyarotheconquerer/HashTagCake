@@ -91,20 +91,28 @@ public class PickupMenu : MonoBehaviour {
 
 	public void AddWeapon() {
 		Debug.Log("Adding weapon");
-		if(Weapon)
-			Unit.AddWeapon(Weapon);
+		Unit = PlayerLogic.player.GetComponent<Unit>();
+		if(Unit)
+		{
+			if(Weapon)
+				Unit.AddWeapon(Weapon);
+		}
 
 		ResetPickMenu();
 	}
 
 	public void ReplaceWeapon() {
 		Debug.Log("Replacing weapon");
-		if(Weapon) {
-			Weapon oldWeapon = Unit.ReplaceWeapon(Weapon);
+		Unit = PlayerLogic.player.GetComponent<Unit>();
+		if(Unit)
+		{
+			if(Weapon) {
+				Weapon oldWeapon = Unit.ReplaceWeapon(Weapon);
 
-			if(oldWeapon) {
-				oldWeapon.DestroySubWeapons();
-				Destroy(oldWeapon.gameObject);
+				if(oldWeapon) {
+					oldWeapon.DestroySubWeapons();
+					Destroy(oldWeapon.gameObject);
+				}
 			}
 		}
 

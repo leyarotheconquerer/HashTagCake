@@ -147,15 +147,17 @@ public class Weapon : MonoBehaviour {
 	 * and tells the subweapons to do the same
 	 */
 	public void CalculateCharacteristics() {
-		foreach (Characteristic characteristic in Characteristics) {
-			HoldingUnit.AddCharacteristic(characteristic);
-		}
+		if(HoldingUnit) {
+			foreach (Characteristic characteristic in Characteristics) {
+				HoldingUnit.AddCharacteristic(characteristic);
+			}
 
-		if(SubWeapons != null) {
-			foreach (Weapon weapon in SubWeapons.Keys) {
-				// Pay no attention to the magic happening here
-				for (int i = 0; i < SubWeapons[weapon]; ++i) {
-					weapon.CalculateCharacteristics();
+			if(SubWeapons != null) {
+				foreach (Weapon weapon in SubWeapons.Keys) {
+					// Pay no attention to the magic happening here
+					for (int i = 0; i < SubWeapons[weapon]; ++i) {
+						weapon.CalculateCharacteristics();
+					}
 				}
 			}
 		}
