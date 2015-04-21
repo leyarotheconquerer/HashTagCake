@@ -132,6 +132,9 @@ GameObject:
   - 92: {fileID: 59401321}
   - 81: {fileID: 59401320}
   - 114: {fileID: 59401319}
+  - 114: {fileID: 59401327}
+  - 114: {fileID: 59401326}
+  - 114: {fileID: 59401325}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -220,6 +223,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &59401325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 59401318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1997211142, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AllowActivationOnStandalone: 0
+--- !u!114 &59401326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 59401318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_AllowActivationOnMobileDevice: 0
+--- !u!114 &59401327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 59401318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 5
 --- !u!1 &462904121
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +373,7 @@ MonoBehaviour:
   - {fileID: 400002, guid: 49d54400b41d6704da0336223a71786c, type: 2}
   - {fileID: 416970, guid: 7a01fb003232f084bb2ec76a2dde2c36, type: 2}
   - {fileID: 453384, guid: 834d604511d3224499aac2e12485ac38, type: 2}
+  PickMenu: {fileID: 125606, guid: 7f9a6744340f0cf4790b7ae2972db2fa, type: 2}
 --- !u!4 &473209015
 Transform:
   m_ObjectHideFlags: 0
