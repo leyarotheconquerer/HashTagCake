@@ -42,12 +42,12 @@ public class Weapon : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D collider) {
-		if (collider.tag == "Player" && HoldingUnit == null) 
+		if (collider.tag == "Player" && HoldingUnit == null)
 		{
 			collider.GetComponent<Unit>().AddWeapon(this.gameObject);
 		}
 		else if(HoldingUnit != null) {
-			if((Hittable.value & (1<<collider.gameObject.layer)) > 0 && 
+			if((Hittable.value & (1<<collider.gameObject.layer)) > 0 &&
 			   collider.gameObject != HoldingUnit.gameObject) {
 				Debug.Log("Cows are happening (" + gameObject.name + " hitting " + collider.gameObject.name + ")");
 
@@ -121,7 +121,7 @@ public class Weapon : MonoBehaviour {
 
 	/**
 	 * Oh...
-	 * 
+	 *
 	 * I just meant to get coffee. Who put these buttons next to each other anyways?
 	 */
 	public void DeactivateAttack() {
@@ -164,7 +164,12 @@ public class Weapon : MonoBehaviour {
 	 * Also tells subweapons to reset
 	 */
 	public void Reset() {
-		Strength = new Dictionary<string, int>(baseStrength);
+		if(baseStrength != null) {
+			Strength = new Dictionary<string, int>(baseStrength);
+		} else {
+			Strength = new Dictionary<string, int>();
+		}
+		
 		Speed = baseSpeed;
 
 		ThrowMudAtHoldingUnit();

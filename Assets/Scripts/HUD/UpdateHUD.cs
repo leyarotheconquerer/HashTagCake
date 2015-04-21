@@ -7,7 +7,7 @@ public class UpdateHUD : MonoBehaviour {
 	public Text Name;
 	public Slider HealthBar;
 
-	void Update() {
+	void LateUpdate() {
 		Unit character = null;
 
 		if(PlayerLogic.player)
@@ -16,7 +16,7 @@ public class UpdateHUD : MonoBehaviour {
 		if(character) {
 			Portrait.sprite = character.GetComponent<SpriteRenderer>().sprite;
 			Name.text = character.Name;
-			HealthBar.value = character.Health/character.MaxHealth;
+			HealthBar.value = (float)character.Health/(float)character.MaxHealth;
 		}
 	}
 }
