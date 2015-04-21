@@ -73,6 +73,17 @@ MonoBehaviour:
   Spawnables:
   - {fileID: 176818, guid: 6e0fa8e76666eae48ba8df87528d12b1, type: 2}
   - {fileID: 139758, guid: 08c6c517966fba84f9dcb2ae317f651f, type: 2}
+  - {fileID: 176818, guid: 418f69e3ff1fb144f848a9d0deb083e5, type: 2}
+  - {fileID: 176818, guid: fe22f29465492d04bae631a13b43714e, type: 2}
+  - {fileID: 176818, guid: b6fc22c2ee101aa4196dad5386231017, type: 2}
+  - {fileID: 176818, guid: 42d99a286c546b94fa10160546436daa, type: 2}
+  - {fileID: 176818, guid: edba79bdc28f2a6498f7926bac1fb2a3, type: 2}
+  - {fileID: 176818, guid: 924231dfe165c444f89322f31aed0ff9, type: 2}
+  - {fileID: 176818, guid: e3eb0106df2f8104cb13d2c01dcb653c, type: 2}
+  - {fileID: 176818, guid: 896596fbbc6b862479448f9f65cabbce, type: 2}
+  - {fileID: 176818, guid: 7f05292375a8aec4583a46024a3b66d0, type: 2}
+  - {fileID: 176818, guid: a8f85e4d33e40284f8adbd3aec1a3e43, type: 2}
+  - {fileID: 176818, guid: 6dbb2a5e817f5ab44b1efd74189fbfed, type: 2}
 --- !u!212 &21216970
 SpriteRenderer:
   m_ObjectHideFlags: 1
